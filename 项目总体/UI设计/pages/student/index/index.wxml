@@ -1,0 +1,92 @@
+<view class="student-home">
+  <!-- 个人信息头部 -->
+  <view class="profile-header">
+    <view class="profile-info">
+      <image class="avatar" src="{{userAvatar}}" />
+      <view class="info-text">
+        <text class="name">{{userName}}</text>
+        <text class="subtitle">{{studentId}} | {{major}}</text>
+      </view>
+    </view>
+    <view class="settings-btn" bindtap="navigateTo" data-url="pages/student/settings/index">⚙️</view>
+  </view>
+
+  <!-- 本周出勤统计 -->
+  <view class="stats-section">
+    <view class="stat-item">
+      <view class="stat-number" style="color: #4caf50;">{{normalCount}}</view>
+      <text class="stat-label">正常</text>
+    </view>
+    <view class="stat-item">
+      <view class="stat-number" style="color: #ff9800;">{{lateCount}}</view>
+      <text class="stat-label">迟到</text>
+    </view>
+    <view class="stat-item">
+      <view class="stat-number" style="color: #f44336;">{{absenceCount}}</view>
+      <text class="stat-label">缺勤</text>
+    </view>
+    <view class="stat-item">
+      <view class="stat-number" style="color: #2196f3;">{{attendanceRate}}%</view>
+      <text class="stat-label">出勤率</text>
+    </view>
+  </view>
+
+  <!-- 快捷操作 -->
+  <view class="quick-actions">
+    <view class="action-btn primary" bindtap="navigateTo" data-url="pages/student/checkin/index">
+      <text class="action-icon">📱</text>
+      <text class="action-text">立即签到</text>
+    </view>
+    <view class="action-btn secondary" bindtap="navigateTo" data-url="pages/student/attendance/index">
+      <text class="action-icon">📋</text>
+      <text class="action-text">考勤记录</text>
+    </view>
+    <view class="action-btn secondary" bindtap="navigateTo" data-url="pages/student/makeup/index">
+      <text class="action-icon">📝</text>
+      <text class="action-text">补签申请</text>
+    </view>
+    <view class="action-btn secondary" bindtap="navigateTo" data-url="pages/student/messages/index">
+      <text class="action-icon">📬</text>
+      <text class="action-text">消息</text>
+      <text class="badge" wx:if="{{unreadCount > 0}}">{{unreadCount}}</text>
+    </view>
+  </view>
+
+  <!-- 今日课程 -->
+  <view class="courses-section">
+    <view class="section-header">
+      <text class="section-title">今日课程</text>
+      <text class="section-more" bindtap="viewAllCourses">查看全部</text>
+    </view>
+    
+    <view class="courses-list">
+      <view class="course-card" wx:for="{{todayCourses}}" wx:key="id" bindtap="startCheckin" data-id="{{item.id}}">
+        <view class="course-time">{{item.startTime}} - {{item.endTime}}</view>
+        <view class="course-info">
+          <view class="course-name">{{item.name}}</view>
+          <view class="course-detail">{{item.location}} | {{item.teacher}}</view>
+        </view>
+        <view class="course-status" data-status="{{item.status}}">
+          {{item.statusText}}
+        </view>
+      </view>
+      
+      <view class="empty-state" wx:if="{{todayCourses.length === 0}}">
+        <text class="empty-icon">📚</text>
+        <text class="empty-text">今日无课程</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 最近通知 -->
+  <view class="notifications-section" wx:if="{{notifications.length > 0}}">
+    <text class="section-title">最近通知</text>
+    <view class="notification-item" wx:for="{{notifications}}" wx:key="id">
+      <view class="notification-icon">📢</view>
+      <view class="notification-content">
+        <text class="notification-title">{{item.title}}</text>
+        <text class="notification-time">{{item.time}}</text>
+      </view>
+    </view>
+  </view>
+</view>

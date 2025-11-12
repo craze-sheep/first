@@ -1,0 +1,67 @@
+<view class="makeup-page">
+  <view class="header">
+    <text class="title">补签申请</text>
+    <text class="subtitle">申请补签已缺勤的课程</text>
+  </view>
+
+  <view class="absent-courses">
+    <text class="section-title">待补签课程</text>
+    <view class="course-list">
+      <view class="course-item" wx:for="{{absentCourses}}" wx:key="id" bindtap="selectCourse" data-id="{{item.id}}">
+        <view class="course-header">
+          <text class="course-name">{{item.courseName}}</text>
+          <view class="course-date">{{item.date}}</view>
+        </view>
+        <view class="course-details">
+          <text class="teacher">{{item.teacher}}</text>
+          <text class="status">{{item.status}}</text>
+        </view>
+        <view class="checkbox" data-selected="{{item.selected}}"></view>
+      </view>
+    </view>
+  </view>
+
+  <view class="form-section">
+    <text class="section-title">补签原因</text>
+    <view class="form-group">
+      <label>缺勤原因 <text class="required">*</text></label>
+      <picker mode="selector" range="{{reasons}}" bindchange="onReasonChange">
+        <view class="picker-input">
+          <text>{{reasons[reasonIndex]}}</text>
+        </view>
+      </picker>
+    </view>
+
+    <view class="form-group">
+      <label>详细说明 <text class="required">*</text></label>
+      <textarea 
+        class="textarea" 
+        placeholder="请详细说明缺勤原因（100字以内）"
+        model:value="{{description}}"
+        maxlength="100"
+      ></textarea>
+      <text class="char-count">{{description.length}}/100</text>
+    </view>
+
+    <view class="form-group">
+      <label>上传证明材料</label>
+      <view class="upload-area" bindtap="uploadFile">
+        <text class="upload-icon">📎</text>
+        <text class="upload-text">点击上传文件</text>
+        <text class="upload-hint">支持图片、PDF等文件</text>
+      </view>
+      <view class="uploaded-files">
+        <view class="file-item" wx:for="{{attachments}}" wx:key="id">
+          <text class="file-icon">📄</text>
+          <text class="file-name">{{item.name}}</text>
+          <text class="delete-btn" bindtap="deleteFile" data-id="{{item.id}}">✕</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="actions">
+    <button class="btn-submit" bindtap="submitApplication">提交申请</button>
+    <button class="btn-cancel" bindtap="backHome">返回</button>
+  </view>
+</view>

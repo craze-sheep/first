@@ -1,0 +1,289 @@
+.student-home {
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  min-height: 100vh;
+  padding-bottom: 30rpx;
+}
+
+.profile-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30rpx;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+}
+
+.profile-info {
+  display: flex;
+  align-items: center;
+  gap: 16rpx;
+  flex: 1;
+}
+
+.avatar {
+  width: 72rpx;
+  height: 72rpx;
+  border-radius: 50%;
+  background: white;
+  border: 3rpx solid rgba(255, 255, 255, 0.5);
+}
+
+.info-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.name {
+  font-size: 28rpx;
+  font-weight: bold;
+  margin-bottom: 4rpx;
+}
+
+.subtitle {
+  font-size: 20rpx;
+  opacity: 0.8;
+}
+
+.settings-btn {
+  font-size: 32rpx;
+  cursor: pointer;
+  padding: 8rpx;
+}
+
+.stats-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 12rpx;
+  padding: 20rpx;
+  margin: -20rpx 20rpx 0;
+}
+
+.stat-item {
+  background: white;
+  border-radius: 12rpx;
+  padding: 16rpx 12rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.08);
+}
+
+.stat-number {
+  font-size: 28rpx;
+  font-weight: bold;
+  margin-bottom: 4rpx;
+}
+
+.stat-label {
+  font-size: 20rpx;
+  color: #999;
+}
+
+.quick-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12rpx;
+  padding: 20rpx;
+}
+
+.action-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8rpx;
+  padding: 24rpx;
+  border-radius: 12rpx;
+  position: relative;
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s;
+}
+
+.action-btn:active {
+  transform: scale(0.95);
+}
+
+.action-btn.primary {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  grid-column: 1 / -1;
+}
+
+.action-btn.secondary {
+  background: white;
+  color: #333;
+}
+
+.action-icon {
+  font-size: 36rpx;
+}
+
+.action-text {
+  font-size: 22rpx;
+  font-weight: bold;
+}
+
+.badge {
+  position: absolute;
+  top: 8rpx;
+  right: 8rpx;
+  background: #f44336;
+  color: white;
+  width: 28rpx;
+  height: 28rpx;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18rpx;
+  font-weight: bold;
+}
+
+.courses-section {
+  padding: 20rpx;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16rpx;
+}
+
+.section-title {
+  font-size: 28rpx;
+  font-weight: bold;
+  color: #333;
+}
+
+.section-more {
+  font-size: 22rpx;
+  color: #667eea;
+  cursor: pointer;
+}
+
+.courses-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12rpx;
+}
+
+.course-card {
+  background: white;
+  border-radius: 12rpx;
+  padding: 16rpx;
+  display: flex;
+  gap: 12rpx;
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.08);
+  align-items: center;
+}
+
+.course-time {
+  min-width: 120rpx;
+  font-size: 20rpx;
+  font-weight: bold;
+  color: #667eea;
+}
+
+.course-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4rpx;
+}
+
+.course-name {
+  font-size: 24rpx;
+  font-weight: bold;
+  color: #333;
+}
+
+.course-detail {
+  font-size: 20rpx;
+  color: #999;
+}
+
+.course-status {
+  padding: 6rpx 12rpx;
+  border-radius: 4rpx;
+  font-size: 20rpx;
+  font-weight: bold;
+  text-align: center;
+  min-width: 80rpx;
+}
+
+.course-status[data-status="not-started"] {
+  background: #e3f2fd;
+  color: #1976d2;
+}
+
+.course-status[data-status="ongoing"] {
+  background: #fff3e0;
+  color: #f57c00;
+}
+
+.course-status[data-status="checked"] {
+  background: #e8f5e9;
+  color: #388e3c;
+}
+
+.course-status[data-status="absent"] {
+  background: #ffebee;
+  color: #c62828;
+}
+
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60rpx 20rpx;
+  color: #999;
+}
+
+.empty-icon {
+  font-size: 60rpx;
+  margin-bottom: 16rpx;
+  opacity: 0.5;
+}
+
+.empty-text {
+  font-size: 24rpx;
+}
+
+.notifications-section {
+  padding: 20rpx;
+}
+
+.notification-item {
+  display: flex;
+  gap: 12rpx;
+  background: white;
+  border-radius: 12rpx;
+  padding: 16rpx;
+  margin-bottom: 12rpx;
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.08);
+}
+
+.notification-icon {
+  font-size: 28rpx;
+  flex-shrink: 0;
+}
+
+.notification-content {
+  display: flex;
+  flex-direction: column;
+  gap: 4rpx;
+  flex: 1;
+}
+
+.notification-title {
+  font-size: 24rpx;
+  color: #333;
+  font-weight: bold;
+}
+
+.notification-time {
+  font-size: 20rpx;
+  color: #999;
+}

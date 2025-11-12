@@ -1,0 +1,45 @@
+{
+  "pages": [
+    "pages/auth/login",
+    "pages/student/index",
+    "pages/student/check-in",
+    "pages/student/records",
+    "pages/student/apply-makeup",
+    "pages/teacher/index",
+    "pages/teacher/start-checkin",
+    "pages/teacher/monitor",
+    "pages/teacher/statistics",
+    "pages/teacher/approve",
+    "pages/counselor/overview",
+    "pages/counselor/students",
+    "pages/counselor/student-detail",
+    "pages/counselor/warnings",
+    "pages/admin/users",
+    "pages/admin/courses",
+    "pages/admin/statistics",
+    "pages/admin/settings"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#0066cc",
+    "navigationBarTitleText": "智能考勤",
+    "navigationBarTextStyle": "white",
+    "navigationStyle": "custom"
+  },
+  "tabBar": {
+    "color": "#999",
+    "selectedColor": "#0066cc",
+    "backgroundColor": "#fff",
+    "borderStyle": "black",
+    "list": []
+  },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "获取你的位置信息以进行签到验证"
+    },
+    "scope.camera": {
+      "desc": "使用摄像头进行人脸识别"
+    }
+  },
+  "requiredPrivateInfos": ["getLocation"]
+}

@@ -1,0 +1,85 @@
+<view class="checkin-start-page">
+  <view class="header">
+    <text class="title">发起签到</text>
+    <text class="subtitle">选择课程并配置签到参数</text>
+  </view>
+
+  <view class="course-selector">
+    <text class="section-title">选择课程</text>
+    <picker class="course-picker" range="{{courseList}}" range-key="name" bindchange="selectCourse">
+      <view class="picker-display">
+        <text>{{selectedCourse.name || '选择课程'}}</text>
+        <text class="picker-icon">▼</text>
+      </view>
+    </picker>
+  </view>
+
+  <view class="strategy-section">
+    <text class="section-title">签到策略</text>
+    <view class="strategy-cards">
+      <view class="strategy-card" data-id="high-security" bindtap="selectStrategy">
+        <view class="strategy-icon">🔒</view>
+        <text class="strategy-name">高安全</text>
+        <text class="strategy-desc">位置 + 二维码 + 人脸</text>
+        <text class="strategy-time">验证时间: 15分钟</text>
+      </view>
+      <view class="strategy-card active" data-id="standard" bindtap="selectStrategy">
+        <view class="strategy-icon">⚡</view>
+        <text class="strategy-name">标准</text>
+        <text class="strategy-desc">位置 + 二维码</text>
+        <text class="strategy-time">验证时间: 10分钟</text>
+      </view>
+      <view class="strategy-card" data-id="quick" bindtap="selectStrategy">
+        <view class="strategy-icon">⚙️</view>
+        <text class="strategy-name">快速</text>
+        <text class="strategy-desc">二维码</text>
+        <text class="strategy-time">验证时间: 5分钟</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="params-section">
+    <text class="section-title">签到参数</text>
+    <view class="param-group">
+      <view class="param-item">
+        <label>签到时长（分钟）</label>
+        <input type="number" placeholder="请输入" model:value="{{params.duration}}" />
+      </view>
+      <view class="param-item">
+        <label>缓冲时间（分钟）</label>
+        <input type="number" placeholder="请输入" model:value="{{params.buffer}}" />
+      </view>
+      <view class="param-item">
+        <label>范围要求（米）</label>
+        <input type="number" placeholder="请输入" model:value="{{params.range}}" />
+      </view>
+    </view>
+  </view>
+
+  <view class="preview-section">
+    <text class="section-title">签到预览</text>
+    <view class="preview-card">
+      <view class="preview-item">
+        <text class="label">课程:</text>
+        <text class="value">{{selectedCourse.name}}</text>
+      </view>
+      <view class="preview-item">
+        <text class="label">策略:</text>
+        <text class="value">{{strategyName}}</text>
+      </view>
+      <view class="preview-item">
+        <text class="label">时长:</text>
+        <text class="value">{{params.duration}}分钟</text>
+      </view>
+      <view class="preview-item">
+        <text class="label">开始时间:</text>
+        <text class="value">立即</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="actions">
+    <button class="btn-start" bindtap="startCheckin">发起签到</button>
+    <button class="btn-cancel" bindtap="backHome">取消</button>
+  </view>
+</view>

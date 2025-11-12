@@ -1,0 +1,73 @@
+<view class="statistics-container">
+  <!-- 时间筛选 -->
+  <view class="filter-section">
+    <view class="filter-group">
+      <text class="filter-label">统计周期：</text>
+      <picker bindchange="onPeriodChange" value="{{periodIndex}}" range="{{periods}}">
+        <view class="picker-text">{{periods[periodIndex]}}</view>
+      </picker>
+    </view>
+    <button class="btn-export">导出报告</button>
+  </view>
+
+  <!-- 课程选择 -->
+  <view class="course-selector">
+    <text class="selector-label">选择课程：</text>
+    <scroll-view scroll-x="true" class="course-scroll">
+      <view class="course-option {{selectedCourse === 'all' ? 'active' : ''}}" bindtap="selectCourse" data-course="all">全部课程</view>
+      <view class="course-option {{selectedCourse === item.id ? 'active' : ''}}" wx:for="{{courses}}" wx:key="id" bindtap="selectCourse" data-course="{{item.id}}">{{item.name}}</view>
+    </scroll-view>
+  </view>
+
+  <!-- 整体统计 -->
+  <view class="stats-card">
+    <text class="stats-title">本周出勤统计</text>
+    <view class="stats-grid">
+      <view class="stat-item">
+        <text class="stat-label">平均出勤率</text>
+        <text class="stat-value">95.2%</text>
+      </view>
+      <view class="stat-item">
+        <text class="stat-label">正常签到</text>
+        <text class="stat-value">285</text>
+      </view>
+      <view class="stat-item">
+        <text class="stat-label">迟到</text>
+        <text class="stat-value">12</text>
+      </view>
+      <view class="stat-item">
+        <text class="stat-label">缺勤</text>
+        <text class="stat-value">8</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 课程排行 -->
+  <view class="ranking-section">
+    <text class="section-title">课程出勤排行</text>
+    <view class="ranking-list">
+      <view class="ranking-item" wx:for="{{courseRanking}}" wx:key="id">
+        <view class="rank-number">{{index + 1}}</view>
+        <view class="rank-info">
+          <text class="rank-course">{{item.course}}</text>
+          <text class="rank-detail">{{item.students}}人 | 出勤率 {{item.rate}}%</text>
+        </view>
+        <view class="rank-rate">{{item.rate}}%</view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 预警学生 -->
+  <view class="alert-section">
+    <text class="section-title">预警学生 (缺勤超过30%)</text>
+    <view class="alert-list">
+      <view class="alert-item" wx:for="{{alertStudents}}" wx:key="id">
+        <view class="alert-icon">⚠️</view>
+        <view class="alert-info">
+          <text class="alert-name">{{item.name}}</text>
+          <text class="alert-detail">缺勤 {{item.absent}} 次 / 共 {{item.total}} 次</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

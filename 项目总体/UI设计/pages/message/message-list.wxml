@@ -1,0 +1,95 @@
+<view class="message-container">
+  <view class="message-header">
+    <text class="header-title">消息通知</text>
+    <view class="header-actions">
+      <button class="header-btn settings-btn">⚙️</button>
+      <button class="header-btn">✓</button>
+    </view>
+  </view>
+
+  <!-- 筛选标签 -->
+  <view class="filter-tags">
+    <scroll-view class="tags-scroll" scroll-x>
+      <view class="tag active">全部</view>
+      <view class="tag">上课提醒</view>
+      <view class="tag">签到通知</view>
+      <view class="tag">预警提醒</view>
+      <view class="tag">系统公告</view>
+    </scroll-view>
+  </view>
+
+  <!-- 消息列表 -->
+  <scroll-view class="message-list" scroll-y>
+    <!-- 未读消息 -->
+    <view class="message-group">
+      <text class="group-title">今天</text>
+
+      <view class="message-item unread">
+        <view class="message-icon">🔔</view>
+        <view class="message-content">
+          <view class="message-header-line">
+            <text class="message-title">课程签到即将开始</text>
+            <text class="message-time">14:30</text>
+          </view>
+          <text class="message-text">计算机组成原理签到将在15分钟后开始，请做好准备</text>
+        </view>
+        <view class="unread-dot"></view>
+      </view>
+
+      <view class="message-item unread">
+        <view class="message-icon">📋</view>
+        <view class="message-content">
+          <view class="message-header-line">
+            <text class="message-title">补签申请已通过</text>
+            <text class="message-time">13:20</text>
+          </view>
+          <text class="message-text">您的补签申请已被教师审批通过，已更新为"已签到"</text>
+        </view>
+        <view class="unread-dot"></view>
+      </view>
+    </view>
+
+    <!-- 已读消息 -->
+    <view class="message-group">
+      <text class="group-title">昨天</text>
+
+      <view class="message-item read">
+        <view class="message-icon">⚠️</view>
+        <view class="message-content">
+          <view class="message-header-line">
+            <text class="message-title">出勤预警提醒</text>
+            <text class="message-time">16:45</text>
+          </view>
+          <text class="message-text">您本周缺勤次数已达2次，请及时改善考勤情况</text>
+        </view>
+      </view>
+
+      <view class="message-item read">
+        <view class="message-icon">📢</view>
+        <view class="message-content">
+          <view class="message-header-line">
+            <text class="message-title">系统维护公告</text>
+            <text class="message-time">09:00</text>
+          </view>
+          <text class="message-text">系统将于今晚10:00-11:00进行日常维护，届时无法使用</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 较早消息 -->
+    <view class="message-group">
+      <text class="group-title">一周前</text>
+
+      <view class="message-item read">
+        <view class="message-icon">✅</view>
+        <view class="message-content">
+          <view class="message-header-line">
+            <text class="message-title">签到成功</text>
+            <text class="message-time">10:15</text>
+          </view>
+          <text class="message-text">您已签到《数据结构》课程，位置在科技楼101</text>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+</view>

@@ -1,0 +1,229 @@
+.user-mgmt-container {
+  background: #f5f7fa;
+  min-height: 100vh;
+  padding: 20rpx;
+}
+
+.search-section {
+  background: white;
+  border-radius: 12rpx;
+  padding: 20rpx;
+  margin-bottom: 20rpx;
+  box-shadow: 0 2rpx 12rpx rgba(0, 0, 0, 0.08);
+}
+
+.search-bar {
+  position: relative;
+  display: flex;
+  align-items: center;
+  background: #f0f2f5;
+  border-radius: 8rpx;
+  margin-bottom: 16rpx;
+  padding: 0 12rpx;
+}
+
+.search-input {
+  flex: 1;
+  height: 72rpx;
+  border: none;
+  background: transparent;
+  font-size: 24rpx;
+  padding: 0 12rpx;
+}
+
+.search-icon {
+  font-size: 24rpx;
+  color: #999;
+}
+
+.filter-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12rpx;
+}
+
+.filter-tag {
+  background: #f0f2f5;
+  border-radius: 20rpx;
+  padding: 12rpx 24rpx;
+  font-size: 24rpx;
+  color: #666;
+  transition: all 0.2s;
+}
+
+.filter-tag.active {
+  background: #667eea;
+  color: white;
+}
+
+.batch-actions {
+  display: flex;
+  gap: 12rpx;
+  margin-bottom: 20rpx;
+}
+
+.btn {
+  flex: 1;
+  height: 72rpx;
+  border-radius: 8rpx;
+  font-size: 24rpx;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-primary {
+  background: #667eea;
+  color: white;
+}
+
+.btn-secondary {
+  background: white;
+  color: #667eea;
+  border: 2rpx solid #667eea;
+}
+
+.user-list {
+  background: white;
+  border-radius: 12rpx;
+  overflow: hidden;
+  box-shadow: 0 2rpx 12rpx rgba(0, 0, 0, 0.08);
+}
+
+.list-header {
+  display: flex;
+  background: #f9f9f9;
+  border-bottom: 1rpx solid #e5e5e5;
+  font-weight: bold;
+  font-size: 24rpx;
+  color: #333;
+}
+
+.col {
+  padding: 16rpx 12rpx;
+  text-align: center;
+}
+
+.col-id {
+  flex: 0.8;
+}
+
+.col-name {
+  flex: 1.2;
+}
+
+.col-role {
+  flex: 1;
+}
+
+.col-status {
+  flex: 1;
+}
+
+.col-action {
+  flex: 1;
+}
+
+.list-body {
+  max-height: 600rpx;
+  overflow-y: auto;
+}
+
+.list-row {
+  display: flex;
+  border-bottom: 1rpx solid #f0f0f0;
+  align-items: center;
+  font-size: 22rpx;
+}
+
+.list-row:hover {
+  background: #f9f9f9;
+}
+
+.role-badge {
+  display: inline-block;
+  padding: 8rpx 12rpx;
+  border-radius: 4rpx;
+  font-size: 20rpx;
+  font-weight: bold;
+}
+
+.role-badge[data-role="student"] {
+  background: #e3f2fd;
+  color: #1976d2;
+}
+
+.role-badge[data-role="teacher"] {
+  background: #f3e5f5;
+  color: #7b1fa2;
+}
+
+.role-badge[data-role="counselor"] {
+  background: #e8f5e9;
+  color: #388e3c;
+}
+
+.role-badge[data-role="admin"] {
+  background: #fff3e0;
+  color: #f57c00;
+}
+
+.status-badge {
+  display: inline-block;
+  padding: 8rpx 12rpx;
+  border-radius: 4rpx;
+  font-size: 20rpx;
+  font-weight: bold;
+}
+
+.status-badge[data-status="active"] {
+  background: #c8e6c9;
+  color: #2e7d32;
+}
+
+.status-badge[data-status="disabled"] {
+  background: #ffcdd2;
+  color: #c62828;
+}
+
+.btn-icon {
+  background: none;
+  border: none;
+  font-size: 24rpx;
+  margin: 0 8rpx;
+  cursor: pointer;
+  padding: 8rpx;
+}
+
+.btn-danger {
+  color: #f44336;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16rpx;
+  margin-top: 20rpx;
+  padding: 20rpx;
+}
+
+.btn-page {
+  background: #667eea;
+  color: white;
+  border: none;
+  padding: 12rpx 24rpx;
+  border-radius: 8rpx;
+  font-size: 24rpx;
+}
+
+.btn-page:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+.page-info {
+  font-size: 24rpx;
+  color: #666;
+}

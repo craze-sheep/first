@@ -1,0 +1,149 @@
+<view class="help-container">
+  <view class="help-header">
+    <text class="header-title">帮助中心</text>
+    <input class="search-box" placeholder="搜索帮助文档..." />
+  </view>
+
+  <scroll-view class="help-content" scroll-y>
+    <!-- 快速导航 -->
+    <view class="quick-nav">
+      <text class="nav-title">快速导航</text>
+      <view class="nav-grid">
+        <view class="nav-item">
+          <text class="nav-icon">👤</text>
+          <text class="nav-label">账号管理</text>
+        </view>
+        <view class="nav-item">
+          <text class="nav-icon">📱</text>
+          <text class="nav-label">签到指南</text>
+        </view>
+        <view class="nav-item">
+          <text class="nav-icon">🔔</text>
+          <text class="nav-label">消息设置</text>
+        </view>
+        <view class="nav-item">
+          <text class="nav-icon">📊</text>
+          <text class="nav-label">数据查询</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 常见问题 -->
+    <view class="faq-section">
+      <text class="section-title">常见问题</text>
+
+      <view class="faq-item">
+        <view class="faq-header">
+          <text class="faq-question">如何在微信上快速登录？</text>
+          <text class="faq-icon">›</text>
+        </view>
+        <view class="faq-answer">
+          <text>1. 打开小程序后点击"微信快捷登录"</text>
+          <text>2. 授权获取微信用户信息</text>
+          <text>3. 输入学号进行身份验证</text>
+          <text>4. 绑定成功后即可使用所有功能</text>
+        </view>
+      </view>
+
+      <view class="faq-item">
+        <view class="faq-header">
+          <text class="faq-question">提示"定位失败"怎么办？</text>
+          <text class="faq-icon">›</text>
+        </view>
+        <view class="faq-answer">
+          <text>• 请检查是否授予了定位权限</text>
+          <text>• 打开手机的定位功能</text>
+          <text>• 确保在有GPS信号的地方</text>
+          <text>• 重新启动小程序重试</text>
+        </view>
+      </view>
+
+      <view class="faq-item">
+        <view class="faq-header">
+          <text class="faq-question">补签申请要多久才能审批？</text>
+          <text class="faq-icon">›</text>
+        </view>
+        <view class="faq-answer">
+          <text>• 一般在24小时内完成审批</text>
+          <text>• 如超过48小时未审批请联系教师</text>
+          <text>• 审批结果会通过消息通知提醒</text>
+        </view>
+      </view>
+
+      <view class="faq-item">
+        <view class="faq-header">
+          <text class="faq-question">如何更改已记录的考勤信息？</text>
+          <text class="faq-icon">›</text>
+        </view>
+        <view class="faq-answer">
+          <text>• 学生端无法直接修改考勤记录</text>
+          <text>• 如有误请申请补签并说明原因</text>
+          <text>• 教师可在批卷页面修改记录</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 功能说明 -->
+    <view class="guide-section">
+      <text class="section-title">功能说明</text>
+
+      <view class="guide-item">
+        <view class="guide-header">
+          <text class="guide-icon">✓</text>
+          <text class="guide-title">标准签到</text>
+        </view>
+        <text class="guide-desc">学生可在指定时间内通过扫描教师的动态二维码完成签到，系统自动识别签到状态。</text>
+      </view>
+
+      <view class="guide-item">
+        <view class="guide-header">
+          <text class="guide-icon">⏰</text>
+          <text class="guide-title">补签申请</text>
+        </view>
+        <text class="guide-desc">学生可对缺勤课程提交补签申请，教师审批后即可更新考勤记录。</text>
+      </view>
+
+      <view class="guide-item">
+        <view class="guide-header">
+          <text class="guide-icon">📈</text>
+          <text class="guide-title">数据统计</text>
+        </view>
+        <text class="guide-desc">实时查看个人出勤率、缺勤次数等考勤统计数据，支持导出详细报告。</text>
+      </view>
+
+      <view class="guide-item">
+        <view class="guide-header">
+          <text class="guide-icon">🔔</text>
+          <text class="guide-title">消息提醒</text>
+        </view>
+        <text class="guide-desc">关键事件（如课前提醒、审批结果、预警通知等）会及时推送给用户。</text>
+      </view>
+    </view>
+
+    <!-- 联系反馈 -->
+    <view class="contact-section">
+      <text class="section-title">无法解决？</text>
+      <view class="contact-card">
+        <view class="contact-item">
+          <text class="contact-icon">📧</text>
+          <text class="contact-text">邮箱: support@attendance.com</text>
+        </view>
+        <view class="contact-item">
+          <text class="contact-icon">☎️</text>
+          <text class="contact-text">电话: 400-800-8888</text>
+        </view>
+        <view class="contact-item">
+          <text class="contact-icon">💬</text>
+          <text class="contact-text">在线客服：工作日 09:00-18:00</text>
+        </view>
+      </view>
+      <button class="btn-feedback">📝 提交反馈</button>
+    </view>
+
+    <!-- 版本信息 -->
+    <view class="version-info">
+      <text>v1.0.0</text>
+      <text>© 2025 智能考勤系统</text>
+    </view>
+  </scroll-view>
+</view>

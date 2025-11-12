@@ -1,0 +1,76 @@
+<view class="user-mgmt-container">
+  <!-- 搜索和筛选 -->
+  <view class="search-section">
+    <view class="search-bar">
+      <input 
+        type="text" 
+        placeholder="搜索姓名或工号..." 
+        class="search-input"
+        bindinput="onSearchInput"
+      />
+      <text class="search-icon">🔍</text>
+    </view>
+    
+    <view class="filter-tags">
+      <view class="filter-tag" data-role="all" bindtap="filterByRole">
+        全部角色
+      </view>
+      <view class="filter-tag" data-role="student" bindtap="filterByRole">
+        学生
+      </view>
+      <view class="filter-tag" data-role="teacher" bindtap="filterByRole">
+        教师
+      </view>
+      <view class="filter-tag" data-role="counselor" bindtap="filterByRole">
+        辅导员
+      </view>
+      <view class="filter-tag" data-role="admin" bindtap="filterByRole">
+        管理员
+      </view>
+    </view>
+  </view>
+
+  <!-- 批量操作 -->
+  <view class="batch-actions">
+    <button class="btn btn-primary">导入用户</button>
+    <button class="btn btn-secondary">导出用户</button>
+    <button class="btn btn-secondary">批量操作</button>
+  </view>
+
+  <!-- 用户列表 -->
+  <view class="user-list">
+    <view class="list-header">
+      <view class="col col-id">ID</view>
+      <view class="col col-name">姓名</view>
+      <view class="col col-role">角色</view>
+      <view class="col col-status">状态</view>
+      <view class="col col-action">操作</view>
+    </view>
+
+    <view class="list-body">
+      <view class="list-row" wx:for="{{users}}" wx:key="id">
+        <view class="col col-id">{{item.id}}</view>
+        <view class="col col-name">{{item.name}}</view>
+        <view class="col col-role">
+          <view class="role-badge" data-role="{{item.role}}">{{item.roleText}}</view>
+        </view>
+        <view class="col col-status">
+          <view class="status-badge" data-status="{{item.status}}">
+            {{item.statusText}}
+          </view>
+        </view>
+        <view class="col col-action">
+          <button class="btn-icon" bindtap="editUser" data-id="{{item.id}}">✏️</button>
+          <button class="btn-icon btn-danger" bindtap="deleteUser" data-id="{{item.id}}">🗑️</button>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 分页 -->
+  <view class="pagination">
+    <button class="btn-page" disabled="{{page === 1}}">上一页</button>
+    <text class="page-info">第 {{page}} 页 / 共 {{totalPages}} 页</text>
+    <button class="btn-page">下一页</button>
+  </view>
+</view>

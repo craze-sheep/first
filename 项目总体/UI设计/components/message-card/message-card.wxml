@@ -1,0 +1,15 @@
+<view class="message-card" data-type="{{type}}">
+  <view class="message-icon">{{icon}}</view>
+  <view class="message-content">
+    <view class="message-header">
+      <text class="message-title">{{title}}</text>
+      <text class="message-time" wx:if="{{showTime}}">{{time}}</text>
+    </view>
+    <text class="message-desc">{{description}}</text>
+    <view class="message-actions" wx:if="{{actions}}">
+      <button class="action-btn" wx:for="{{actions}}" wx:key="id" bindtap="onAction" data-action-id="{{item.id}}">
+        {{item.label}}
+      </button>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,66 @@
+<view class="attendance-container">
+  <!-- 筛选器 -->
+  <view class="filter-section">
+    <view class="filter-group">
+      <picker class="filter-picker" bindchange="onTermChange" value="{{termIndex}}" range="{{terms}}">
+        <view class="filter-text">{{terms[termIndex]}}</view>
+      </picker>
+      <picker class="filter-picker" bindchange="onCourseChange" value="{{courseIndex}}" range="{{courses}}">
+        <view class="filter-text">{{courses[courseIndex]}}</view>
+      </picker>
+    </view>
+    <view class="filter-tabs">
+      <view class="filter-tab" data-status="all" bindtap="filterByStatus">全部</view>
+      <view class="filter-tab" data-status="present" bindtap="filterByStatus">正常</view>
+      <view class="filter-tab" data-status="late" bindtap="filterByStatus">迟到</view>
+      <view class="filter-tab" data-status="absent" bindtap="filterByStatus">缺勤</view>
+    </view>
+  </view>
+
+  <!-- 统计摘要 -->
+  <view class="summary-card">
+    <view class="summary-item">
+      <text class="summary-label">签到次数</text>
+      <text class="summary-value">{{totalCount}}</text>
+    </view>
+    <view class="summary-item">
+      <text class="summary-label">出勤率</text>
+      <text class="summary-value">{{attendanceRate}}%</text>
+    </view>
+    <view class="summary-item">
+      <text class="summary-label">缺勤次数</text>
+      <text class="summary-value">{{absentCount}}</text>
+    </view>
+  </view>
+
+  <!-- 考勤记录列表 -->
+  <view class="records-list">
+    <view class="record-item" wx:for="{{records}}" wx:key="id" bindtap="viewDetails" data-id="{{item.id}}">
+      <view class="record-header">
+        <text class="record-course">{{item.courseName}}</text>
+        <view class="record-status" data-status="{{item.status}}">
+          {{item.statusText}}
+        </view>
+      </view>
+      <view class="record-details">
+        <text class="record-date">{{item.date}}</text>
+        <text class="record-time">{{item.checkInTime}}</text>
+      </view>
+      <view class="record-footer" wx:if="{{item.status === 'absent'}}">
+        <button class="btn-makeup" bindtap="applyMakeup" data-id="{{item.id}}">申请补签</button>
+      </view>
+    </view>
+
+    <view class="empty-state" wx:if="{{records.length === 0}}">
+      <text class="empty-icon">📭</text>
+      <text class="empty-text">暂无记录</text>
+    </view>
+  </view>
+
+  <!-- 分页 -->
+  <view class="pagination" wx:if="{{records.length > 0}}">
+    <button class="btn-page" disabled="{{page === 1}}">上一页</button>
+    <text class="page-info">第 {{page}} 页</text>
+    <button class="btn-page">下一页</button>
+  </view>
+</view>

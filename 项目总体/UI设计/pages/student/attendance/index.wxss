@@ -1,0 +1,197 @@
+.attendance-container {
+  background: #f5f7fa;
+  min-height: 100vh;
+  padding: 20rpx;
+}
+
+.filter-section {
+  background: white;
+  border-radius: 12rpx;
+  padding: 16rpx;
+  margin-bottom: 16rpx;
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.08);
+}
+
+.filter-group {
+  display: flex;
+  gap: 12rpx;
+  margin-bottom: 12rpx;
+}
+
+.filter-picker {
+  flex: 1;
+  background: #f0f2f5;
+  border-radius: 8rpx;
+  padding: 10rpx 12rpx;
+  font-size: 22rpx;
+}
+
+.filter-text {
+  color: #333;
+}
+
+.filter-tabs {
+  display: flex;
+  gap: 8rpx;
+  flex-wrap: wrap;
+}
+
+.filter-tab {
+  background: #f0f2f5;
+  border-radius: 16rpx;
+  padding: 8rpx 16rpx;
+  font-size: 22rpx;
+  color: #666;
+  transition: all 0.2s;
+}
+
+.filter-tab.active {
+  background: #667eea;
+  color: white;
+}
+
+.summary-card {
+  display: flex;
+  gap: 12rpx;
+  background: white;
+  border-radius: 12rpx;
+  padding: 20rpx;
+  margin-bottom: 20rpx;
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.08);
+}
+
+.summary-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8rpx;
+}
+
+.summary-label {
+  font-size: 20rpx;
+  color: #999;
+}
+
+.summary-value {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333;
+}
+
+.records-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12rpx;
+}
+
+.record-item {
+  background: white;
+  border-radius: 12rpx;
+  padding: 16rpx;
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.08);
+}
+
+.record-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12rpx;
+}
+
+.record-course {
+  font-size: 24rpx;
+  font-weight: bold;
+  color: #333;
+}
+
+.record-status {
+  padding: 6rpx 12rpx;
+  border-radius: 4rpx;
+  font-size: 20rpx;
+  font-weight: bold;
+}
+
+.record-status[data-status="present"] {
+  background: #e8f5e9;
+  color: #2e7d32;
+}
+
+.record-status[data-status="late"] {
+  background: #fff3e0;
+  color: #f57c00;
+}
+
+.record-status[data-status="absent"] {
+  background: #ffebee;
+  color: #c62828;
+}
+
+.record-details {
+  display: flex;
+  gap: 20rpx;
+  font-size: 22rpx;
+  color: #999;
+  margin-bottom: 12rpx;
+}
+
+.record-footer {
+  display: flex;
+  gap: 12rpx;
+}
+
+.btn-makeup {
+  flex: 1;
+  background: #ff9800;
+  color: white;
+  border: none;
+  border-radius: 6rpx;
+  padding: 8rpx 12rpx;
+  font-size: 20rpx;
+  font-weight: bold;
+}
+
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 80rpx 20rpx;
+  color: #999;
+}
+
+.empty-icon {
+  font-size: 80rpx;
+  margin-bottom: 16rpx;
+  opacity: 0.5;
+}
+
+.empty-text {
+  font-size: 24rpx;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16rpx;
+  margin-top: 20rpx;
+}
+
+.btn-page {
+  background: #667eea;
+  color: white;
+  border: none;
+  padding: 10rpx 20rpx;
+  border-radius: 6rpx;
+  font-size: 22rpx;
+}
+
+.btn-page:disabled {
+  background: #ccc;
+}
+
+.page-info {
+  font-size: 22rpx;
+  color: #999;
+}

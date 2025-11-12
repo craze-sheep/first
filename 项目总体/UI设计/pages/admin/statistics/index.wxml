@@ -1,0 +1,70 @@
+<view class="statistics-container">
+  <!-- 时间选择器 -->
+  <view class="time-filter">
+    <view class="filter-group">
+      <text class="filter-label">统计周期：</text>
+      <picker class="filter-picker" bindchange="onPeriodChange" value="{{periodIndex}}" range="{{periods}}">
+        <view class="picker-text">{{periods[periodIndex]}}</view>
+      </picker>
+    </view>
+    <button class="btn-export">导出报表</button>
+  </view>
+
+  <!-- 统计卡片 -->
+  <view class="stats-cards">
+    <view class="stat-card large">
+      <text class="stat-label">全校平均出勤率</text>
+      <view class="stat-value">{{overallAttendance}}%</view>
+      <view class="progress-bar">
+        <view class="progress-fill" style="width: {{overallAttendance}}%"></view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 多维度统计 -->
+  <view class="statistics-section">
+    <text class="section-title">按学院统计</text>
+    <view class="chart-container">
+      <view class="chart-item" wx:for="{{departmentStats}}" wx:key="dept">
+        <view class="chart-label">{{item.dept}}</view>
+        <view class="chart-bar">
+          <view class="bar-fill" style="width: {{item.rate}}%"></view>
+        </view>
+        <view class="chart-value">{{item.rate}}%</view>
+      </view>
+    </view>
+  </view>
+
+  <view class="statistics-section">
+    <text class="section-title">按课程排行</text>
+    <view class="ranking-table">
+      <view class="ranking-header">
+        <view class="rank-col rank-no">排名</view>
+        <view class="rank-col rank-course">课程名称</view>
+        <view class="rank-col rank-teacher">教师</view>
+        <view class="rank-col rank-rate">出勤率</view>
+      </view>
+      <view class="ranking-body">
+        <view class="ranking-row" wx:for="{{courseRanking}}" wx:key="id">
+          <view class="rank-col rank-no">{{index + 1}}</view>
+          <view class="rank-col rank-course">{{item.course}}</view>
+          <view class="rank-col rank-teacher">{{item.teacher}}</view>
+          <view class="rank-col rank-rate">
+            <view class="rate-badge">{{item.rate}}%</view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 趋势分析 -->
+  <view class="statistics-section">
+    <text class="section-title">出勤趋势</text>
+    <view class="trend-chart">
+      <view class="trend-item" wx:for="{{trendData}}" wx:key="date">
+        <view class="trend-bar" style="height: {{item.value * 2}}rpx;"></view>
+        <text class="trend-label">{{item.date}}</text>
+      </view>
+    </view>
+  </view>
+</view>

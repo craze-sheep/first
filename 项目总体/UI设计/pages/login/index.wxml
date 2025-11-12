@@ -1,0 +1,45 @@
+<view class="login-page">
+  <view class="logo-section">
+    <view class="logo">📚</view>
+    <text class="app-name">智能考勤系统</text>
+    <text class="app-desc">智能打卡 高效管理</text>
+  </view>
+
+  <view class="roles-section">
+    <text class="roles-title">请选择身份</text>
+    <view class="role-buttons">
+      <view class="role-btn" bindtap="selectRole" data-role="student">
+        <view class="role-icon">👨‍🎓</view>
+        <text>学生</text>
+      </view>
+      <view class="role-btn" bindtap="selectRole" data-role="teacher">
+        <view class="role-icon">👨‍🏫</view>
+        <text>教师</text>
+      </view>
+      <view class="role-btn" bindtap="selectRole" data-role="counselor">
+        <view class="role-icon">👔</view>
+        <text>辅导员</text>
+      </view>
+      <view class="role-btn" bindtap="selectRole" data-role="admin">
+        <view class="role-icon">⚙️</view>
+        <text>管理员</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="login-form" wx:if="{{selectedRole}}">
+    <view class="form-group">
+      <label>账号</label>
+      <input type="text" placeholder="请输入学号/工号" model:value="{{username}}" />
+    </view>
+    <view class="form-group">
+      <label>密码</label>
+      <input type="password" placeholder="请输入密码" model:value="{{password}}" />
+    </view>
+    <button class="login-btn" bindtap="login" loading="{{loading}}">登录</button>
+    <view class="help-links">
+      <text class="link" bindtap="resetPassword">忘记密码?</text>
+      <text class="link" bindtap="signup">立即注册</text>
+    </view>
+  </view>
+</view>

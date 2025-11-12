@@ -1,0 +1,236 @@
+.statistics-container {
+  background: #f5f7fa;
+  min-height: 100vh;
+  padding: 20rpx;
+}
+
+.time-filter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: white;
+  padding: 20rpx;
+  border-radius: 12rpx;
+  margin-bottom: 20rpx;
+  box-shadow: 0 2rpx 12rpx rgba(0, 0, 0, 0.08);
+}
+
+.filter-group {
+  display: flex;
+  align-items: center;
+}
+
+.filter-label {
+  font-size: 24rpx;
+  color: #666;
+  margin-right: 12rpx;
+}
+
+.filter-picker {
+  background: #f0f2f5;
+  border-radius: 8rpx;
+  padding: 12rpx 16rpx;
+  font-size: 24rpx;
+}
+
+.picker-text {
+  color: #333;
+}
+
+.btn-export {
+  background: #667eea;
+  color: white;
+  border: none;
+  padding: 12rpx 24rpx;
+  border-radius: 8rpx;
+  font-size: 24rpx;
+}
+
+.stats-cards {
+  margin-bottom: 20rpx;
+}
+
+.stat-card {
+  background: white;
+  border-radius: 12rpx;
+  padding: 24rpx;
+  box-shadow: 0 2rpx 12rpx rgba(0, 0, 0, 0.08);
+}
+
+.stat-card.large {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+}
+
+.stat-label {
+  display: block;
+  font-size: 24rpx;
+  opacity: 0.9;
+  margin-bottom: 12rpx;
+}
+
+.stat-value {
+  font-size: 48rpx;
+  font-weight: bold;
+  margin-bottom: 16rpx;
+}
+
+.progress-bar {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 8rpx;
+  height: 8rpx;
+  overflow: hidden;
+}
+
+.progress-fill {
+  background: white;
+  height: 100%;
+  transition: width 0.3s;
+}
+
+.statistics-section {
+  background: white;
+  border-radius: 12rpx;
+  padding: 20rpx;
+  margin-bottom: 20rpx;
+  box-shadow: 0 2rpx 12rpx rgba(0, 0, 0, 0.08);
+}
+
+.section-title {
+  display: block;
+  font-size: 28rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 20rpx;
+}
+
+.chart-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16rpx;
+}
+
+.chart-item {
+  display: flex;
+  align-items: center;
+  gap: 12rpx;
+}
+
+.chart-label {
+  min-width: 100rpx;
+  font-size: 22rpx;
+  color: #666;
+}
+
+.chart-bar {
+  flex: 1;
+  background: #f0f2f5;
+  border-radius: 4rpx;
+  height: 32rpx;
+  overflow: hidden;
+}
+
+.bar-fill {
+  background: linear-gradient(90deg, #667eea, #764ba2);
+  height: 100%;
+  transition: width 0.3s;
+}
+
+.chart-value {
+  min-width: 60rpx;
+  text-align: right;
+  font-size: 22rpx;
+  color: #333;
+  font-weight: bold;
+}
+
+.ranking-table {
+  overflow-x: auto;
+}
+
+.ranking-header {
+  display: flex;
+  background: #f9f9f9;
+  border-bottom: 1rpx solid #e5e5e5;
+  font-weight: bold;
+  font-size: 22rpx;
+  color: #333;
+}
+
+.rank-col {
+  padding: 12rpx;
+  text-align: center;
+}
+
+.rank-no {
+  flex: 0.6;
+}
+
+.rank-course {
+  flex: 1.5;
+}
+
+.rank-teacher {
+  flex: 1;
+}
+
+.rank-rate {
+  flex: 0.8;
+}
+
+.ranking-body {
+  max-height: 400rpx;
+  overflow-y: auto;
+}
+
+.ranking-row {
+  display: flex;
+  border-bottom: 1rpx solid #f0f0f0;
+  align-items: center;
+  font-size: 22rpx;
+}
+
+.ranking-row:hover {
+  background: #f9f9f9;
+}
+
+.rate-badge {
+  background: #c8e6c9;
+  color: #2e7d32;
+  padding: 8rpx 12rpx;
+  border-radius: 4rpx;
+  font-weight: bold;
+  display: inline-block;
+}
+
+.trend-chart {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-around;
+  gap: 12rpx;
+  height: 240rpx;
+  padding: 20rpx 0;
+  border-bottom: 2rpx solid #e5e5e5;
+}
+
+.trend-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8rpx;
+  flex: 1;
+}
+
+.trend-bar {
+  width: 100%;
+  max-width: 40rpx;
+  background: linear-gradient(180deg, #667eea, #764ba2);
+  border-radius: 4rpx 4rpx 0 0;
+  transition: height 0.3s;
+}
+
+.trend-label {
+  font-size: 20rpx;
+  color: #999;
+  writing-mode: horizontal-tb;
+}

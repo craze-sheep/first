@@ -1,0 +1,283 @@
+.stats-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background: #f5f7fa;
+  padding: 0;
+}
+
+.stats-header {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: #fff;
+  padding: 20rpx 30rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.header-title {
+  font-size: 36rpx;
+  font-weight: bold;
+}
+
+.header-btn {
+  width: 50rpx;
+  height: 50rpx;
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  border-radius: 8rpx;
+  font-size: 28rpx;
+  color: #fff;
+}
+
+.stats-content {
+  flex: 1;
+  overflow-y: auto;
+  padding-bottom: 30rpx;
+}
+
+.filter-section {
+  background: #fff;
+  padding: 25rpx 30rpx;
+  margin: 15rpx 0;
+  border-radius: 12rpx;
+  margin-left: 15rpx;
+  margin-right: 15rpx;
+}
+
+.filter-label {
+  display: block;
+  font-size: 28rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 15rpx;
+}
+
+.date-range {
+  display: flex;
+  align-items: center;
+  gap: 10rpx;
+  margin-bottom: 15rpx;
+}
+
+.date-picker {
+  flex: 1;
+}
+
+.date-input {
+  height: 70rpx;
+  background: #f0f2f5;
+  border: 1rpx solid #ddd;
+  border-radius: 8rpx;
+  padding: 0 15rpx;
+  font-size: 26rpx;
+  display: flex;
+  align-items: center;
+}
+
+.range-separator {
+  padding: 0 10rpx;
+  color: #999;
+}
+
+.btn-refresh {
+  width: 100%;
+  height: 70rpx;
+  background: #667eea;
+  color: #fff;
+  border: none;
+  border-radius: 8rpx;
+  font-size: 28rpx;
+  font-weight: bold;
+}
+
+.stats-overview {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15rpx;
+  padding: 15rpx;
+  margin: 15rpx;
+}
+
+.overview-card {
+  background: #fff;
+  padding: 20rpx;
+  border-radius: 12rpx;
+  box-shadow: 0 2rpx 10rpx rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+}
+
+.card-label {
+  font-size: 26rpx;
+  color: #999;
+  margin-bottom: 10rpx;
+}
+
+.card-value {
+  font-size: 40rpx;
+  font-weight: bold;
+  color: #667eea;
+  margin-bottom: 10rpx;
+}
+
+.card-value.warning {
+  color: #ff6b6b;
+}
+
+.card-desc {
+  font-size: 22rpx;
+  color: #999;
+}
+
+.card-bar {
+  width: 100%;
+  height: 6rpx;
+  background: #e8eaf6;
+  border-radius: 3rpx;
+  overflow: hidden;
+  margin-top: 10rpx;
+}
+
+.card-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #667eea, #764ba2);
+}
+
+.chart-section {
+  background: #fff;
+  padding: 25rpx 30rpx;
+  margin: 15rpx;
+  border-radius: 12rpx;
+  box-shadow: 0 2rpx 10rpx rgba(0, 0, 0, 0.05);
+}
+
+.section-title {
+  display: block;
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 20rpx;
+}
+
+.chart-placeholder {
+  width: 100%;
+  height: 300rpx;
+  background: #f9f9f9;
+  border-radius: 8rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20rpx;
+}
+
+.pie-chart {
+  height: 280rpx;
+}
+
+.line-chart {
+  height: 250rpx;
+}
+
+.bar-chart {
+  height: 280rpx;
+}
+
+.chart-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 25rpx;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 8rpx;
+  font-size: 24rpx;
+  color: #666;
+}
+
+.legend-color {
+  width: 16rpx;
+  height: 16rpx;
+  border-radius: 3rpx;
+}
+
+.table-section {
+  background: #fff;
+  padding: 25rpx 30rpx;
+  margin: 15rpx;
+  border-radius: 12rpx;
+  box-shadow: 0 2rpx 10rpx rgba(0, 0, 0, 0.05);
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20rpx;
+}
+
+.view-all {
+  font-size: 24rpx;
+  color: #667eea;
+}
+
+.table {
+  width: 100%;
+}
+
+.table-header {
+  display: flex;
+  padding: 12rpx 0;
+  border-bottom: 2rpx solid #667eea;
+  font-weight: bold;
+  color: #333;
+  font-size: 26rpx;
+}
+
+.table-row {
+  display: flex;
+  padding: 15rpx 0;
+  border-bottom: 1rpx solid #f0f2f5;
+  font-size: 26rpx;
+  align-items: center;
+}
+
+.cell {
+  color: #666;
+}
+
+.status-ok {
+  color: #09b83e;
+  font-weight: bold;
+}
+
+.status-late {
+  color: #ffd700;
+  font-weight: bold;
+}
+
+.action-section {
+  padding: 20rpx 15rpx;
+  display: flex;
+  gap: 15rpx;
+}
+
+.btn-export {
+  flex: 1;
+  height: 70rpx;
+  background: #f0f2f5;
+  border: 2rpx solid #667eea;
+  border-radius: 8rpx;
+  font-size: 26rpx;
+  color: #667eea;
+  font-weight: bold;
+}
+
+.btn-export:active {
+  background: #e8eaf6;
+}

@@ -1,0 +1,93 @@
+<view class="warning-page">
+  <view class="header">
+    <view class="header-title">
+      <text>预警学生</text>
+      <text class="subtitle">12名学生预警中</text>
+    </view>
+  </view>
+
+  <view class="filters">
+    <scroll-view scroll-x class="filter-tags">
+      <view class="filter-tag active">全部</view>
+      <view class="filter-tag">
+        <text class="tag-dot red"></text>严重
+      </view>
+      <view class="filter-tag">
+        <text class="tag-dot yellow"></text>关注
+      </view>
+      <view class="filter-tag">
+        <text class="tag-dot green"></text>正常</view>
+    </scroll-view>
+    <view class="search-box">
+      <input type="text" placeholder="搜索学生姓名或学号" />
+    </view>
+  </view>
+
+  <view class="warning-list">
+    <view class="warning-item">
+      <view class="warning-level red">严重</view>
+      <view class="student-info">
+        <view class="student-name">
+          <text class="name">王明</text>
+          <text class="student-id">202301001</text>
+        </view>
+        <view class="student-details">
+          <view class="detail-row">
+            <text class="label">班级:</text>
+            <text class="value">计算机2班</text>
+          </view>
+          <view class="detail-row">
+            <text class="label">出勤率:</text>
+            <text class="value alert">68%</text>
+          </view>
+        </view>
+      </view>
+      <view class="reason-badge red">连续缺勤3次</view>
+      <navigator url="./detail?id=1" class="action-btn">跟进</navigator>
+    </view>
+
+    <view class="warning-item">
+      <view class="warning-level yellow">关注</view>
+      <view class="student-info">
+        <view class="student-name">
+          <text class="name">李静</text>
+          <text class="student-id">202301045</text>
+        </view>
+        <view class="student-details">
+          <view class="detail-row">
+            <text class="label">班级:</text>
+            <text class="value">计算机2班</text>
+          </view>
+          <view class="detail-row">
+            <text class="label">出勤率:</text>
+            <text class="value">82%</text>
+          </view>
+        </view>
+      </view>
+      <view class="reason-badge yellow">缺勤率超30%</view>
+      <navigator url="./detail?id=2" class="action-btn">跟进</navigator>
+    </view>
+
+    <view class="warning-item">
+      <view class="warning-level green">正常</view>
+      <view class="student-info">
+        <view class="student-name">
+          <text class="name">张浩</text>
+          <text class="student-id">202301023</text>
+        </view>
+        <view class="student-details">
+          <view class="detail-row">
+            <text class="label">班级:</text>
+            <text class="value">计算机1班</text>
+          </view>
+          <view class="detail-row">
+            <text class="label">出勤率:</text>
+            <text class="value">94%</text>
+          </view>
+        </view>
+      </view>
+      <view class="reason-badge green">恢复正常</view>
+      <navigator url="./detail?id=3" class="action-btn">查看</navigator>
+    </view>
+  </view>
+</view>

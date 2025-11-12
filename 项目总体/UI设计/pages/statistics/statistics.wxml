@@ -1,0 +1,126 @@
+<view class="stats-container">
+  <view class="stats-header">
+    <text class="header-title">考勤统计</text>
+    <button class="header-btn">📊</button>
+  </view>
+
+  <scroll-view class="stats-content" scroll-y>
+    <!-- 时间选择 -->
+    <view class="filter-section">
+      <text class="filter-label">选择时间范围</text>
+      <view class="date-range">
+        <picker class="date-picker">
+          <view class="date-input">2024-11-01</view>
+        </picker>
+        <text class="range-separator">至</text>
+        <picker class="date-picker">
+          <view class="date-input">2024-11-12</view>
+        </picker>
+      </view>
+      <button class="btn-refresh">刷新</button>
+    </view>
+
+    <!-- 统计概览卡 -->
+    <view class="stats-overview">
+      <view class="overview-card">
+        <text class="card-label">出勤率</text>
+        <text class="card-value">92%</text>
+        <view class="card-bar">
+          <view class="card-bar-fill" style="width: 92%;"></view>
+        </view>
+      </view>
+
+      <view class="overview-card">
+        <text class="card-label">已签到</text>
+        <text class="card-value">23</text>
+        <text class="card-desc">次</text>
+      </view>
+
+      <view class="overview-card">
+        <text class="card-label">缺勤</text>
+        <text class="card-value warning">2</text>
+        <text class="card-desc">次</text>
+      </view>
+
+      <view class="overview-card">
+        <text class="card-label">迟到</text>
+        <text class="card-value">1</text>
+        <text class="card-desc">次</text>
+      </view>
+    </view>
+
+    <!-- 签到情况分布（饼图） -->
+    <view class="chart-section">
+      <text class="section-title">签到情况分布</text>
+      <view class="chart-placeholder pie-chart">
+        <image src="/assets/pie-chart.png" style="width: 100%; height: 100%;"></image>
+      </view>
+      <view class="chart-legend">
+        <view class="legend-item">
+          <view class="legend-color" style="background: #667eea;"></view>
+          <text>已签到 (23次)</text>
+        </view>
+        <view class="legend-item">
+          <view class="legend-color" style="background: #ffd700;"></view>
+          <text>迟到 (1次)</text>
+        </view>
+        <view class="legend-item">
+          <view class="legend-color" style="background: #ff6b6b;"></view>
+          <text>缺勤 (2次)</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 周考勤趋势（折线图） -->
+    <view class="chart-section">
+      <text class="section-title">周考勤趋势</text>
+      <view class="chart-placeholder line-chart">
+        <image src="/assets/line-chart.png" style="width: 100%; height: 100%;"></image>
+      </view>
+    </view>
+
+    <!-- 课程出勤排行（柱状图） -->
+    <view class="chart-section">
+      <text class="section-title">课程出勤情况</text>
+      <view class="chart-placeholder bar-chart">
+        <image src="/assets/bar-chart.png" style="width: 100%; height: 100%;"></image>
+      </view>
+    </view>
+
+    <!-- 详细记录表 -->
+    <view class="table-section">
+      <view class="section-header">
+        <text class="section-title">最近签到记录</text>
+        <text class="view-all">查看全部 →</text>
+      </view>
+      <view class="table">
+        <view class="table-header">
+          <text class="cell" style="flex: 1;">日期</text>
+          <text class="cell" style="flex: 1.5;">课程</text>
+          <text class="cell" style="flex: 1;">状态</text>
+        </view>
+        <view class="table-row">
+          <text class="cell" style="flex: 1;">11-12</text>
+          <text class="cell" style="flex: 1.5;">计算机组成原理</text>
+          <text class="cell status-ok" style="flex: 1;">✓ 已签到</text>
+        </view>
+        <view class="table-row">
+          <text class="cell" style="flex: 1;">11-11</text>
+          <text class="cell" style="flex: 1.5;">数据结构</text>
+          <text class="cell status-late" style="flex: 1;">⏱ 迟到</text>
+        </view>
+        <view class="table-row">
+          <text class="cell" style="flex: 1;">11-10</text>
+          <text class="cell" style="flex: 1.5;">操作系统</text>
+          <text class="cell status-ok" style="flex: 1;">✓ 已签到</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 导出按钮 -->
+    <view class="action-section">
+      <button class="btn-export">📥 导出为 Excel</button>
+      <button class="btn-export">📄 导出为 PDF</button>
+    </view>
+  </scroll-view>
+</view>

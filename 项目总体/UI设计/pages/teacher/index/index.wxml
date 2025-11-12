@@ -1,0 +1,59 @@
+<view class="teacher-container">
+  <!-- 欢迎区 -->
+  <view class="header-section">
+    <view class="header-content">
+      <text class="header-title">课程中心</text>
+      <text class="header-subtitle">欢迎，李老师</text>
+    </view>
+    <view class="header-icon">📚</view>
+  </view>
+
+  <!-- 课程统计 -->
+  <view class="stats-grid">
+    <view class="stat-card">
+      <view class="stat-value">8</view>
+      <text class="stat-label">授课课程</text>
+    </view>
+    <view class="stat-card">
+      <view class="stat-value">95.2%</view>
+      <text class="stat-label">平均出勤率</text>
+    </view>
+  </view>
+
+  <!-- 搜索和筛选 -->
+  <view class="search-section">
+    <view class="search-bar">
+      <input type="text" placeholder="搜索课程..." class="search-input" bindinput="onSearchInput" />
+      <text class="search-icon">🔍</text>
+    </view>
+    <view class="filter-tabs">
+      <view class="filter-tab active" bindtap="filterSemester" data-semester="current">
+        本学期
+      </view>
+      <view class="filter-tab" bindtap="filterSemester" data-semester="all">
+        全部
+      </view>
+    </view>
+  </view>
+
+  <!-- 课程列表 -->
+  <view class="course-list">
+    <view class="course-card" wx:for="{{courses}}" wx:key="id" bindtap="viewCourseDetail" data-course-id="{{item.id}}">
+      <view class="course-header">
+        <view class="course-info">
+          <text class="course-name">{{item.name}}</text>
+          <text class="course-class">{{item.className}} | {{item.students}}人</text>
+        </view>
+        <view class="course-attendance">{{item.attendance}}%</view>
+      </view>
+      <view class="course-body">
+        <text class="course-time">时间: {{item.time}}</text>
+        <text class="course-location">地点: {{item.location}}</text>
+      </view>
+      <view class="course-actions">
+        <button class="btn-action" bindtap="startCheckIn" data-course-id="{{item.id}}">发起签到</button>
+        <button class="btn-action btn-secondary" bindtap="viewStatistics" data-course-id="{{item.id}}">查看统计</button>
+      </view>
+    </view>
+  </view>
+</view>

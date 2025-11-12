@@ -1,0 +1,91 @@
+<view class="counselor-home">
+  <view class="header">
+    <view class="welcome-section">
+      <text class="welcome-text">欢迎，李老师</text>
+      <text class="subtitle">辅导员中心</text>
+    </view>
+    <view class="user-avatar">LJ</view>
+  </view>
+
+  <view class="stats-container">
+    <view class="stat-card primary">
+      <text class="stat-label">管辖班级</text>
+      <text class="stat-value">4</text>
+    </view>
+    <view class="stat-card">
+      <text class="stat-label">预警学生</text>
+      <text class="stat-value warning">8</text>
+    </view>
+    <view class="stat-card">
+      <text class="stat-label">平均出勤率</text>
+      <text class="stat-value">92%</text>
+    </view>
+    <view class="stat-card">
+      <text class="stat-label">待审批</text>
+      <text class="stat-value">3</text>
+    </view>
+  </view>
+
+  <view class="quick-actions">
+    <text class="section-title">快速操作</text>
+    <view class="action-grid">
+      <view class="action-item">
+        <view class="action-icon bg-blue">
+          <text>📊</text>
+        </view>
+        <text class="action-label">概览分析</text>
+      </view>
+      <view class="action-item">
+        <view class="action-icon bg-red">
+          <text>⚠️</text>
+        </view>
+        <text class="action-label">预警学生</text>
+      </view>
+      <view class="action-item">
+        <view class="action-icon bg-green">
+          <text>✓</text>
+        </view>
+        <text class="action-label">审批申请</text>
+      </view>
+      <view class="action-item">
+        <view class="action-icon bg-orange">
+          <text>👥</text>
+        </view>
+        <text class="action-label">班级管理</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="today-section">
+    <view class="section-header">
+      <text class="section-title">今日待办</text>
+      <navigator url="../todo/index" class="more-link">查看全部 ></navigator>
+    </view>
+    <view class="todo-list">
+      <view class="todo-item high-priority">
+        <view class="priority-indicator"></view>
+        <view class="todo-content">
+          <text class="todo-title">审批3项补签申请</text>
+          <text class="todo-time">计算机2班</text>
+        </view>
+        <text class="todo-badge">3</text>
+      </view>
+      <view class="todo-item">
+        <view class="priority-indicator"></view>
+        <view class="todo-content">
+          <text class="todo-title">跟进王明缺勤情况</text>
+          <text class="todo-time">已缺勤3次</text>
+        </view>
+        <text class="todo-status">进行中</text>
+      </view>
+      <view class="todo-item">
+        <view class="priority-indicator"></view>
+        <view class="todo-content">
+          <text class="todo-title">导出本周考勤报表</text>
+          <text class="todo-time">每周一任务</text>
+        </view>
+        <text class="todo-status">待处理</text>
+      </view>
+    </view>
+  </view>
+</view>

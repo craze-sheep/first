@@ -1,0 +1,69 @@
+<view class="role-container">
+  <view class="role-header">
+    <view class="header-info">
+      <image class="user-avatar" src="/assets/avatar.png"></image>
+      <view class="user-details">
+        <text class="user-name">李浩</text>
+        <text class="user-id">学号: 2023001001</text>
+      </view>
+    </view>
+    <view class="current-role">
+      <text class="role-label">当前身份：</text>
+      <text class="role-badge">学生</text>
+    </view>
+  </view>
+
+  <view class="role-content">
+    <text class="section-title">选择要切换的身份</text>
+
+    <view class="role-list">
+      <view class="role-card active">
+        <view class="card-header">
+          <text class="role-icon">👨‍🎓</text>
+          <text class="role-name">学生</text>
+        </view>
+        <text class="role-desc">查看课程、打卡考勤、申请补签</text>
+        <view class="role-meta">
+          <text class="meta-badge">已激活</text>
+        </view>
+        <button class="btn-switch active">当前身份</button>
+      </view>
+
+      <view class="role-card">
+        <view class="card-header">
+          <text class="role-icon">👨‍🏫</text>
+          <text class="role-name">助教</text>
+        </view>
+        <text class="role-desc">协助管理课程、查看学生考勤</text>
+        <view class="role-meta">
+          <text class="meta-badge">已激活</text>
+        </view>
+        <button class="btn-switch">切换身份</button>
+      </view>
+
+      <view class="role-card">
+        <view class="card-header">
+          <text class="role-icon">👨‍💼</text>
+          <text class="role-name">教师</text>
+        </view>
+        <text class="role-desc">发起签到、管理课堂、处理补签</text>
+        <view class="role-meta">
+          <text class="meta-badge">已激活</text>
+        </view>
+        <button class="btn-switch">切换身份</button>
+      </view>
+
+      <view class="role-card">
+        <view class="card-header">
+          <text class="role-icon">⚙️</text>
+          <text class="role-name">管理员</text>
+        </view>
+        <text class="role-desc">系统配置、数据管理、权限控制</text>
+        <view class="role-meta">
+          <text class="meta-badge">待审核</text>
+        </view>
+        <button class="btn-switch disabled">待审核</button>
+      </view>
+    </view>
+  </view>
+</view>

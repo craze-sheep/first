@@ -1,0 +1,62 @@
+<view class="checkin-container">
+  <!-- 顶部 -->
+  <view class="header-section">
+    <text class="header-title">发起签到</text>
+  </view>
+
+  <!-- 签到配置 -->
+  <view class="config-section">
+    <!-- 课程选择 -->
+    <view class="config-item">
+      <text class="config-label">选择课程 *</text>
+      <picker bindchange="onCourseChange" value="{{courseIndex}}" range="{{courses}}" range-key="name">
+        <view class="picker-value">{{courses[courseIndex].name}}</view>
+      </picker>
+    </view>
+
+    <!-- 签到策略 -->
+    <view class="config-item">
+      <text class="config-label">签到策略 *</text>
+      <view class="strategy-options">
+        <view class="strategy-card {{strategy === 'high' ? 'active' : ''}}" bindtap="selectStrategy" data-strategy="high">
+          <text class="strategy-name">高安全</text>
+          <text class="strategy-desc">定位+二维码+人脸</text>
+        </view>
+        <view class="strategy-card {{strategy === 'standard' ? 'active' : ''}}" bindtap="selectStrategy" data-strategy="standard">
+          <text class="strategy-name">标准</text>
+          <text class="strategy-desc">定位+二维码</text>
+        </view>
+        <view class="strategy-card {{strategy === 'quick' ? 'active' : ''}}" bindtap="selectStrategy" data-strategy="quick">
+          <text class="strategy-name">便捷</text>
+          <text class="strategy-desc">仅二维码</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 签到时长和缓冲 -->
+    <view class="config-item">
+      <text class="config-label">签到时长（分钟）</text>
+      <view class="input-group">
+        <input type="number" placeholder="5-15" class="input-field" bindinput="onDurationChange" value="{{duration}}" />
+      </view>
+    </view>
+
+    <view class="config-item">
+      <text class="config-label">迟到缓冲（分钟）</text>
+      <picker bindchange="onBufferChange" value="{{bufferIndex}}" range="{{buffers}}">
+        <view class="picker-value">{{buffers[bufferIndex]}}分钟</view>
+      </picker>
+    </view>
+
+    <!-- 签到范围 -->
+    <view class="config-item">
+      <text class="config-label">签到范围（米）</text>
+      <view class="input-group">
+        <input type="number" placeholder="30-200" class="input-field" bindinput="onRangeChange" value="{{range}}" />
+      </view>
+    </view>
+
+    <!-- 开始签到按钮 -->
+    <button class="btn-primary" bindtap="startCheckIn">开始签到</button>
+  </view>
+</view>

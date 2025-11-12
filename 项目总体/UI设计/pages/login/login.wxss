@@ -1,0 +1,136 @@
+.login-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 0;
+}
+
+.login-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 60rpx 0 40rpx;
+  color: #fff;
+}
+
+.app-logo {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 20rpx;
+  margin-bottom: 20rpx;
+  box-shadow: 0 10rpx 30rpx rgba(0, 0, 0, 0.2);
+}
+
+.app-title {
+  font-size: 40rpx;
+  font-weight: bold;
+  margin-bottom: 10rpx;
+}
+
+.app-subtitle {
+  font-size: 24rpx;
+  opacity: 0.9;
+}
+
+.login-content {
+  flex: 1;
+  padding: 40rpx 30rpx;
+  display: flex;
+  flex-direction: column;
+  gap: 30rpx;
+}
+
+.login-card {
+  background: #fff;
+  border-radius: 16rpx;
+  padding: 40rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 10rpx 40rpx rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease;
+}
+
+.login-card:active {
+  transform: scale(0.98);
+}
+
+.card-icon {
+  font-size: 60rpx;
+  margin-bottom: 20rpx;
+}
+
+.card-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 10rpx;
+}
+
+.card-desc {
+  font-size: 24rpx;
+  color: #999;
+  margin-bottom: 30rpx;
+}
+
+.input-field {
+  width: 100%;
+  height: 80rpx;
+  border: 1rpx solid #ddd;
+  border-radius: 8rpx;
+  padding: 0 20rpx;
+  margin-bottom: 20rpx;
+  font-size: 28rpx;
+  box-sizing: border-box;
+}
+
+.btn-wechat,
+.btn-login {
+  width: 100%;
+  height: 80rpx;
+  border-radius: 8rpx;
+  font-size: 32rpx;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-wechat {
+  background: #09b83e;
+  color: #fff;
+}
+
+.btn-login {
+  background: #667eea;
+  color: #fff;
+}
+
+.login-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 28rpx;
+  opacity: 0.7;
+}
+
+.login-footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 30rpx;
+  gap: 20rpx;
+  color: #fff;
+  font-size: 24rpx;
+  opacity: 0.8;
+}
+
+.footer-link {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.footer-divider {
+  opacity: 0.5;
+}

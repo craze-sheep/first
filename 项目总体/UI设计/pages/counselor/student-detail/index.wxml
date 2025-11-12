@@ -1,0 +1,98 @@
+<view class="student-detail-page">
+  <view class="header">
+    <view class="student-header">
+      <view class="avatar">{{student.name.charAt(0)}}</view>
+      <view class="student-info">
+        <text class="name">{{student.name}}</text>
+        <text class="id">{{student.studentId}}</text>
+        <text class="class">{{student.class}} | {{student.major}}</text>
+      </view>
+    </view>
+    <view class="warning-status" data-level="{{student.warningLevel}}">
+      {{student.warningText}}
+    </view>
+  </view>
+
+  <view class="tabs">
+    <view class="tab-item active" data-tab="attendance" bindtap="switchTab">考勤档案</view>
+    <view class="tab-item" data-tab="courses" bindtap="switchTab">课程明细</view>
+    <view class="tab-item" data-tab="followup" bindtap="switchTab">跟进记录</view>
+  </view>
+
+  <view class="tab-content">
+    <!-- 考勤档案 -->
+    <view class="tab-pane active" data-tab="attendance">
+      <view class="stats-grid">
+        <view class="stat-box">
+          <text class="stat-label">签到次数</text>
+          <text class="stat-value">{{attendance.totalCheckins}}</text>
+        </view>
+        <view class="stat-box">
+          <text class="stat-label">正常/迟到</text>
+          <text class="stat-value">{{attendance.normal}}/{{attendance.late}}</text>
+        </view>
+        <view class="stat-box">
+          <text class="stat-label">缺勤</text>
+          <text class="stat-value alert">{{attendance.absent}}</text>
+        </view>
+        <view class="stat-box">
+          <text class="stat-label">补签</text>
+          <text class="stat-value">{{attendance.makeup}}</text>
+        </view>
+      </view>
+
+      <view class="attendance-chart">
+        <text class="chart-title">出勤率趋势</text>
+        <view class="chart-placeholder">月度出勤率折线图</view>
+      </view>
+
+      <view class="attendance-details">
+        <text class="title">各课程出勤情况</text>
+        <view class="course-item" wx:for="{{attendance.courses}}" wx:key="id">
+          <view class="course-name">{{item.name}}</view>
+          <view class="course-rate">
+            <text class="rate-label">{{item.rate}}%</text>
+            <view class="rate-bar">
+              <view class="rate-fill" style="width: {{item.rate}}%"></view>
+            </view>
+          </view>
+          <text class="course-status" data-status="{{item.status}}">{{item.statusText}}</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 课程明细 -->
+    <view class="tab-pane" data-tab="courses">
+      <view class="records-list">
+        <view class="record-item" wx:for="{{courseRecords}}" wx:key="id">
+          <view class="record-date">{{item.date}}</view>
+          <view class="record-info">
+            <text class="record-course">{{item.courseName}}</text>
+            <text class="record-time">{{item.checkInTime}}</text>
+          </view>
+          <text class="record-status" data-status="{{item.status}}">{{item.statusText}}</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 跟进记录 -->
+    <view class="tab-pane" data-tab="followup">
+      <button class="btn-add-followup" bindtap="addFollowup">添加跟进记录</button>
+      <view class="followup-list">
+        <view class="followup-item" wx:for="{{followupRecords}}" wx:key="id">
+          <view class="followup-date">{{item.date}}</view>
+          <view class="followup-content">
+            <text class="followup-title">{{item.title}}</text>
+            <text class="followup-desc">{{item.description}}</text>
+          </view>
+          <view class="followup-status" data-status="{{item.status}}">{{item.statusText}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="actions">
+    <button class="btn-contact" bindtap="contactStudent">联系学生</button>
+    <button class="btn-export" bindtap="exportReport">导出报告</button>
+  </view>
+</view>

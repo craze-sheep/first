@@ -1,0 +1,105 @@
+<view class="checkin-container">
+  <!-- 课程信息 -->
+  <view class="course-header">
+    <view class="course-title">{{courseInfo.name}}</view>
+    <view class="course-info">
+      <text>{{courseInfo.teacher}} | {{courseInfo.location}}</text>
+    </view>
+    <view class="time-display">
+      <text class="label">签到结束倒计时</text>
+      <text class="countdown">{{countdown}}</text>
+    </view>
+  </view>
+
+  <!-- 签到验证过程 -->
+  <view class="checkin-process">
+    <!-- 定位验证 -->
+    <view class="step-item" data-step="location">
+      <view class="step-icon" data-status="{{locationStatus}}">
+        <text wx:if="{{locationStatus === 'pending'}}">🔄</text>
+        <text wx:if="{{locationStatus === 'success'}}">✓</text>
+        <text wx:if="{{locationStatus === 'error'}}">✗</text>
+      </view>
+      <view class="step-content">
+        <view class="step-title">位置验证</view>
+        <view class="step-desc" wx:if="{{locationStatus === 'pending'}}">
+          定位中...
+        </view>
+        <view class="step-desc" wx:if="{{locationStatus === 'success'}}">
+          距教室 {{distance}}m
+        </view>
+        <view class="step-desc error" wx:if="{{locationStatus === 'error'}}">
+          {{locationError}}
+        </view>
+      </view>
+    </view>
+
+    <!-- 二维码验证 -->
+    <view class="step-item" data-step="qrcode">
+      <view class="step-icon" data-status="{{qrcodeStatus}}">
+        <text wx:if="{{qrcodeStatus === 'pending'}}">📱</text>
+        <text wx:if="{{qrcodeStatus === 'success'}}">✓</text>
+        <text wx:if="{{qrcodeStatus === 'error'}}">✗</text>
+      </view>
+      <view class="step-content">
+        <view class="step-title">二维码验证</view>
+        <button 
+          class="scan-btn" 
+          disabled="{{!canScan}}"
+          bindtap="startScan"
+        >
+          {{canScan ? '点击扫描' : '请先完成位置验证'}}
+        </button>
+      </view>
+    </view>
+
+    <!-- 人脸识别（可选） -->
+    <view class="step-item" data-step="face" wx:if="{{faceRecognitionRequired}}">
+      <view class="step-icon" data-status="{{faceStatus}}">
+        <text wx:if="{{faceStatus === 'pending'}}">📸</text>
+        <text wx:if="{{faceStatus === 'success'}}">✓</text>
+        <text wx:if="{{faceStatus === 'error'}}">✗</text>
+      </view>
+      <view class="step-content">
+        <view class="step-title">人脸识别</view>
+        <view class="step-desc">
+          {{faceStatusText}}
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 签到结果 -->
+  <view class="checkin-result" wx:if="{{showResult}}">
+    <view class="result-card" data-status="{{resultStatus}}">
+      <text class="result-icon">
+        <text wx:if="{{resultStatus === 'success'}}">✅</text>
+        <text wx:if="{{resultStatus === 'late'}}">⚠️</text>
+        <text wx:if="{{resultStatus === 'failed'}}">❌</text>
+      </text>
+      <view class="result-title">{{resultTitle}}</view>
+      <view class="result-desc">{{resultDesc}}</view>
+      <view class="result-time">签到时间：{{checkInTime}}</view>
+      <button class="btn-back" bindtap="backHome">返回首页</button>
+    </view>
+  </view>
+
+  <!-- 说明信息 -->
+  <view class="requirements" wx:if="{{!showResult}}">
+    <text class="req-title">签到要求</text>
+    <view class="req-list">
+      <view class="req-item">
+        位置在教室50米范围内
+      </view>
+      <view class="req-item">
+        需要扫描教师二维码
+      </view>
+      <view class="req-item" wx:if="{{faceRecognitionRequired}}">
+        完成人脸识别验证
+      </view>
+      <view class="req-item">
+        在签到时间内完成所有验证
+      </view>
+    </view>
+  </view>
+</view>

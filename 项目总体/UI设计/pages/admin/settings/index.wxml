@@ -1,0 +1,105 @@
+<view class="settings-page">
+  <view class="header">
+    <text class="title">系统设置</text>
+  </view>
+
+  <view class="settings-list">
+    <view class="settings-group">
+      <text class="group-title">签到配置</text>
+      <view class="settings-item" bindtap="toggleSetting" data-key="location-verify">
+        <view class="setting-info">
+          <text class="setting-name">位置验证</text>
+          <text class="setting-desc">要求学生在指定范围内签到</text>
+        </view>
+        <view class="toggle" data-enabled="{{settings.locationVerify}}"></view>
+      </view>
+      <view class="settings-item" bindtap="toggleSetting" data-key="qrcode-verify">
+        <view class="setting-info">
+          <text class="setting-name">二维码验证</text>
+          <text class="setting-desc">需要扫描教师生成的二维码</text>
+        </view>
+        <view class="toggle" data-enabled="{{settings.qrcodeVerify}}"></view>
+      </view>
+      <view class="settings-item" bindtap="toggleSetting" data-key="face-recognize">
+        <view class="setting-info">
+          <text class="setting-name">人脸识别</text>
+          <text class="setting-desc">可选的高级验证方式</text>
+        </view>
+        <view class="toggle" data-enabled="{{settings.faceRecognize}}"></view>
+      </view>
+    </view>
+
+    <view class="settings-group">
+      <text class="group-title">系统参数</text>
+      <view class="settings-input-item">
+        <label>签到超时时间（分钟）</label>
+        <input type="number" placeholder="请输入" model:value="{{settings.checkinTimeout}}" />
+      </view>
+      <view class="settings-input-item">
+        <label>迟到判定时间（分钟）</label>
+        <input type="number" placeholder="请输入" model:value="{{settings.lateTime}}" />
+      </view>
+      <view class="settings-input-item">
+        <label>位置验证范围（米）</label>
+        <input type="number" placeholder="请输入" model:value="{{settings.locationRange}}" />
+      </view>
+    </view>
+
+    <view class="settings-group">
+      <text class="group-title">通知设置</text>
+      <view class="settings-item" bindtap="toggleSetting" data-key="sms-notify">
+        <view class="setting-info">
+          <text class="setting-name">短信通知</text>
+          <text class="setting-desc">向学生发送短信提醒</text>
+        </view>
+        <view class="toggle" data-enabled="{{settings.smsNotify}}"></view>
+      </view>
+      <view class="settings-item" bindtap="toggleSetting" data-key="email-notify">
+        <view class="setting-info">
+          <text class="setting-name">邮件通知</text>
+          <text class="setting-desc">向相关人员发送邮件</text>
+        </view>
+        <view class="toggle" data-enabled="{{settings.emailNotify}}"></view>
+      </view>
+    </view>
+
+    <view class="settings-group">
+      <text class="group-title">数据管理</text>
+      <view class="settings-item" bindtap="backupData">
+        <view class="setting-info">
+          <text class="setting-name">备份数据</text>
+          <text class="setting-desc">导出所有系统数据</text>
+        </view>
+        <text class="arrow">></text>
+      </view>
+      <view class="settings-item" bindtap="clearLogs">
+        <view class="setting-info">
+          <text class="setting-name">清理日志</text>
+          <text class="setting-desc">清除30天前的操作日志</text>
+        </view>
+        <text class="arrow">></text>
+      </view>
+    </view>
+
+    <view class="settings-group">
+      <text class="group-title">关于系统</text>
+      <view class="info-item">
+        <text class="info-label">系统版本</text>
+        <text class="info-value">v1.0.0</text>
+      </view>
+      <view class="info-item">
+        <text class="info-label">最后更新</text>
+        <text class="info-value">2024-01-15</text>
+      </view>
+      <view class="info-item">
+        <text class="info-label">技术支持</text>
+        <text class="info-value">support@school.edu</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="actions">
+    <button class="btn-save" bindtap="saveSettings">保存设置</button>
+    <button class="btn-reset" bindtap="resetSettings">重置为默认</button>
+  </view>
+</view>

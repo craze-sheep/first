@@ -1,0 +1,95 @@
+<view class="statistics-page">
+  <view class="header">
+    <view class="selector-group">
+      <picker class="time-picker" value="按周">
+        <view class="picker-value">按周 ▼</view>
+      </picker>
+      <picker class="grade-picker" value="全年级">
+        <view class="picker-value">全年级 ▼</view>
+      </picker>
+    </view>
+  </view>
+
+  <view class="overall-stats">
+    <view class="stat-card">
+      <view class="stat-content">
+        <text class="stat-label">整体出勤率</text>
+        <view class="stat-value-group">
+          <text class="stat-value">88.5%</text>
+          <text class="stat-change up">↑ 2.3%</text>
+        </view>
+      </view>
+      <view class="progress-bar">
+        <view class="progress" style="width: 88.5%"></view>
+      </view>
+    </view>
+
+    <view class="attendance-summary">
+      <view class="summary-item">
+        <text class="summary-label">正常</text>
+        <text class="summary-value">2480</text>
+        <text class="summary-percentage">正常</text>
+      </view>
+      <view class="summary-item">
+        <text class="summary-label">迟到</text>
+        <text class="summary-value alert">156</text>
+        <text class="summary-percentage">6.7%</text>
+      </view>
+      <view class="summary-item">
+        <text class="summary-label">缺勤</text>
+        <text class="summary-value alert">124</text>
+        <text class="summary-percentage">5.3%</text>
+      </view>
+      <view class="summary-item">
+        <text class="summary-label">补签</text>
+        <text class="summary-value">88</text>
+        <text class="summary-percentage">3.8%</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="analysis-section">
+    <text class="section-title">班级出勤排名</text>
+    <view class="ranking-list">
+      <view class="ranking-item rank-1">
+        <view class="rank-badge">1</view>
+        <view class="class-name">计算机1班</view>
+        <view class="rate-bar">
+          <view class="rate-fill" style="width: 95%"></view>
+        </view>
+        <text class="rate-value">95%</text>
+      </view>
+
+      <view class="ranking-item rank-2">
+        <view class="rank-badge">2</view>
+        <view class="class-name">计算机2班</view>
+        <view class="rate-bar">
+          <view class="rate-fill" style="width: 89%"></view>
+        </view>
+        <text class="rate-value">89%</text>
+      </view>
+
+      <view class="ranking-item rank-3">
+        <view class="rank-badge">3</view>
+        <view class="class-name">计算机3班</view>
+        <view class="rate-bar">
+          <view class="rate-fill" style="width: 82%"></view>
+        </view>
+        <text class="rate-value">82%</text>
+      </view>
+
+      <view class="ranking-item">
+        <view class="rank-badge">4</view>
+        <view class="class-name">计算机4班</view>
+        <view class="rate-bar">
+          <view class="rate-fill" style="width: 78%"></view>
+        </view>
+        <text class="rate-value">78%</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="export-section">
+    <button class="export-btn">导出报表</button>
+  </view>
+</view>

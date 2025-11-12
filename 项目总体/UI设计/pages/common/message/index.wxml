@@ -1,0 +1,34 @@
+<view class="message-page">
+  <view class="header">
+    <text class="title">消息中心</text>
+    <view class="header-actions">
+      <button class="btn-mark-read" bindtap="markAllRead">全部已读</button>
+    </view>
+  </view>
+
+  <view class="tabs">
+    <view class="tab active" data-type="all" bindtap="switchTab">全部</view>
+    <view class="tab" data-type="system" bindtap="switchTab">系统</view>
+    <view class="tab" data-type="notice" bindtap="switchTab">通知</view>
+    <view class="tab" data-type="alert" bindtap="switchTab">预警</view>
+  </view>
+
+  <view class="messages-list">
+    <view class="message-item" wx:for="{{messages}}" wx:key="id" data-read="{{item.read}}" bindtap="readMessage" data-id="{{item.id}}">
+      <view class="message-icon" data-type="{{item.type}}">{{item.icon}}</view>
+      <view class="message-info">
+        <view class="message-header">
+          <text class="message-title">{{item.title}}</text>
+          <text class="message-time">{{item.time}}</text>
+        </view>
+        <text class="message-preview">{{item.preview}}</text>
+      </view>
+      <view class="message-badge" wx:if="{{!item.read}}"></view>
+    </view>
+
+    <view class="empty-state" wx:if="{{messages.length === 0}}">
+      <text class="empty-icon">📭</text>
+      <text class="empty-text">暂无消息</text>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,405 @@
+.student-detail-page {
+  background: #f5f7fa;
+  min-height: 100vh;
+  padding-bottom: 20rpx;
+}
+
+.header {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 20rpx;
+  color: white;
+}
+
+.student-header {
+  display: flex;
+  gap: 16rpx;
+  margin-bottom: 16rpx;
+  align-items: center;
+}
+
+.avatar {
+  width: 60rpx;
+  height: 60rpx;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28rpx;
+  font-weight: bold;
+}
+
+.student-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4rpx;
+}
+
+.name {
+  display: block;
+  font-size: 26rpx;
+  font-weight: bold;
+}
+
+.id {
+  display: block;
+  font-size: 20rpx;
+  opacity: 0.9;
+}
+
+.class {
+  display: block;
+  font-size: 20rpx;
+  opacity: 0.8;
+}
+
+.warning-status {
+  padding: 8rpx 12rpx;
+  border-radius: 6rpx;
+  font-size: 20rpx;
+  font-weight: bold;
+  display: inline-block;
+  width: fit-content;
+}
+
+.warning-status[data-level="severe"] {
+  background: #ff6b6b;
+}
+
+.warning-status[data-level="warning"] {
+  background: #ffa500;
+}
+
+.warning-status[data-level="normal"] {
+  background: #51cf66;
+}
+
+.tabs {
+  display: flex;
+  background: white;
+  border-bottom: 1rpx solid #e0e0e0;
+  margin-top: 16rpx;
+}
+
+.tab-item {
+  flex: 1;
+  padding: 16rpx;
+  text-align: center;
+  font-size: 24rpx;
+  color: #95a5a6;
+  border-bottom: 3rpx solid transparent;
+}
+
+.tab-item.active {
+  color: #667eea;
+  border-bottom-color: #667eea;
+  font-weight: bold;
+}
+
+.tab-content {
+  padding: 20rpx;
+}
+
+.tab-pane {
+  display: none;
+}
+
+.tab-pane.active {
+  display: block;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12rpx;
+  margin-bottom: 20rpx;
+}
+
+.stat-box {
+  background: white;
+  border-radius: 12rpx;
+  padding: 16rpx;
+  text-align: center;
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.08);
+}
+
+.stat-label {
+  display: block;
+  font-size: 20rpx;
+  color: #95a5a6;
+  margin-bottom: 8rpx;
+}
+
+.stat-value {
+  display: block;
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #667eea;
+}
+
+.stat-value.alert {
+  color: #ff6b6b;
+}
+
+.attendance-chart {
+  background: white;
+  border-radius: 12rpx;
+  padding: 20rpx;
+  margin-bottom: 20rpx;
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.08);
+}
+
+.chart-title {
+  display: block;
+  font-size: 24rpx;
+  font-weight: bold;
+  margin-bottom: 16rpx;
+}
+
+.chart-placeholder {
+  background: #f9fafb;
+  border: 1rpx dashed #e0e0e0;
+  border-radius: 8rpx;
+  padding: 60rpx 20rpx;
+  text-align: center;
+  color: #95a5a6;
+}
+
+.attendance-details {
+  background: white;
+  border-radius: 12rpx;
+  padding: 20rpx;
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.08);
+}
+
+.title {
+  display: block;
+  font-size: 24rpx;
+  font-weight: bold;
+  margin-bottom: 16rpx;
+}
+
+.course-item {
+  padding: 12rpx 0;
+  border-bottom: 1rpx solid #f0f0f0;
+  display: flex;
+  align-items: center;
+  gap: 12rpx;
+}
+
+.course-item:last-child {
+  border-bottom: none;
+}
+
+.course-name {
+  width: 100rpx;
+  font-size: 22rpx;
+  color: #2c3e50;
+}
+
+.course-rate {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 8rpx;
+}
+
+.rate-label {
+  width: 40rpx;
+  text-align: right;
+  font-size: 20rpx;
+  font-weight: bold;
+}
+
+.rate-bar {
+  flex: 1;
+  background: #ecf0f1;
+  border-radius: 4rpx;
+  height: 6rpx;
+  overflow: hidden;
+}
+
+.rate-fill {
+  background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+  height: 100%;
+}
+
+.course-status {
+  padding: 4rpx 8rpx;
+  border-radius: 4rpx;
+  font-size: 18rpx;
+}
+
+.course-status[data-status="normal"] {
+  background: #e8f5e9;
+  color: #2e7d32;
+}
+
+.course-status[data-status="warning"] {
+  background: #fff3e0;
+  color: #f57c00;
+}
+
+.course-status[data-status="alert"] {
+  background: #ffebee;
+  color: #c62828;
+}
+
+.records-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12rpx;
+}
+
+.record-item {
+  background: white;
+  border-radius: 12rpx;
+  padding: 16rpx;
+  display: flex;
+  gap: 12rpx;
+  align-items: center;
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.08);
+}
+
+.record-date {
+  background: #f9fafb;
+  padding: 8rpx 12rpx;
+  border-radius: 6rpx;
+  font-size: 20rpx;
+  color: #95a5a6;
+  min-width: 80rpx;
+}
+
+.record-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4rpx;
+}
+
+.record-course {
+  font-size: 24rpx;
+  font-weight: bold;
+  color: #2c3e50;
+}
+
+.record-time {
+  font-size: 20rpx;
+  color: #95a5a6;
+}
+
+.record-status {
+  padding: 4rpx 12rpx;
+  border-radius: 4rpx;
+  font-size: 18rpx;
+  font-weight: bold;
+}
+
+.record-status[data-status="present"] {
+  background: #e8f5e9;
+  color: #2e7d32;
+}
+
+.record-status[data-status="late"] {
+  background: #fff3e0;
+  color: #f57c00;
+}
+
+.record-status[data-status="absent"] {
+  background: #ffebee;
+  color: #c62828;
+}
+
+.btn-add-followup {
+  width: 100%;
+  background: #51cf66;
+  color: white;
+  border: none;
+  border-radius: 8rpx;
+  padding: 12rpx 0;
+  font-size: 24rpx;
+  margin-bottom: 16rpx;
+}
+
+.followup-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12rpx;
+}
+
+.followup-item {
+  background: white;
+  border-radius: 12rpx;
+  padding: 16rpx;
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.08);
+}
+
+.followup-date {
+  font-size: 20rpx;
+  color: #95a5a6;
+  margin-bottom: 8rpx;
+}
+
+.followup-content {
+  display: flex;
+  flex-direction: column;
+  gap: 4rpx;
+  margin-bottom: 8rpx;
+}
+
+.followup-title {
+  display: block;
+  font-size: 24rpx;
+  font-weight: bold;
+  color: #2c3e50;
+}
+
+.followup-desc {
+  display: block;
+  font-size: 20rpx;
+  color: #666;
+}
+
+.followup-status {
+  display: inline-block;
+  padding: 4rpx 12rpx;
+  border-radius: 4rpx;
+  font-size: 18rpx;
+}
+
+.followup-status[data-status="pending"] {
+  background: #fff3e0;
+  color: #f57c00;
+}
+
+.followup-status[data-status="completed"] {
+  background: #e8f5e9;
+  color: #2e7d32;
+}
+
+.actions {
+  padding: 20rpx;
+  display: flex;
+  gap: 12rpx;
+}
+
+.btn-contact,
+.btn-export {
+  flex: 1;
+  border: none;
+  border-radius: 8rpx;
+  padding: 14rpx 0;
+  font-size: 24rpx;
+  font-weight: bold;
+}
+
+.btn-contact {
+  background: #667eea;
+  color: white;
+}
+
+.btn-export {
+  background: #ecf0f1;
+  color: #7f8c8d;
+}

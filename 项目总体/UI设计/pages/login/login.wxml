@@ -1,0 +1,40 @@
+<view class="login-container">
+  <!-- 顶部品牌区 -->
+  <view class="login-header">
+    <image class="app-logo" src="/assets/logo.png"></image>
+    <text class="app-title">智能考勤系统</text>
+    <text class="app-subtitle">Attendance Management System</text>
+  </view>
+
+  <!-- 登录方式选择 -->
+  <view class="login-content">
+    <view class="login-card">
+      <view class="card-icon">🔐</view>
+      <text class="card-title">微信快捷登录</text>
+      <text class="card-desc">一键绑定，安全快速</text>
+      <button class="btn-wechat" open-type="getUserInfo">
+        <text>微信登录</text>
+      </button>
+    </view>
+
+    <view class="login-divider">
+      <text>或</text>
+    </view>
+
+    <view class="login-card">
+      <view class="card-icon">📱</view>
+      <text class="card-title">账号密码登录</text>
+      <text class="card-desc">输入学号/工号登录</text>
+      <input class="input-field" placeholder="学号/工号" />
+      <input class="input-field" placeholder="密码" password />
+      <button class="btn-login">登录</button>
+    </view>
+  </view>
+
+  <!-- 底部信息 -->
+  <view class="login-footer">
+    <text class="footer-link">隐私政策</text>
+    <text class="footer-divider">|</text>
+    <text class="footer-link">用户协议</text>
+  </view>
+</view>
