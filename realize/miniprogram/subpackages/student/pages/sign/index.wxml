@@ -1,0 +1,25 @@
+<view class="page">
+  <view class="card info">
+    <view class="title">{{task.name}}</view>
+    <view class="meta">{{task.teacher}} · {{task.location}}</view>
+    <view class="deadline">{{task.deadline}} · {{task.mode}}</view>
+  </view>
+
+  <section-header title="验证流程"></section-header>
+  <view class="steps card">
+    <view class="step" wx:for="{{task.steps}}" wx:key="title">
+      <view class="marker {{item.status}}"></view>
+      <view class="step-info">
+        <view class="step-title">{{item.title}}</view>
+        <view class="step-status">{{item.status === 'done' ? '已完成' : item.status === 'pending' ? '待完成' : '跳过'}}</view>
+      </view>
+    </view>
+  </view>
+
+  <section-header title="操作"></section-header>
+  <view class="actions card">
+    <button type="primary" bindtap="handleScan">扫码验证</button>
+    <button wx:if="{{task.faceRequired}}" type="primary" class="btn-secondary" bindtap="handleFace">人脸识别</button>
+    <button type="primary" loading="{{submitting}}" bindtap="handleSubmit">提交签到</button>
+  </view>
+</view>

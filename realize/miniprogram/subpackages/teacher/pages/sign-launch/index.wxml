@@ -1,0 +1,40 @@
+<view class="page">
+  <view class="card">
+    <view class="field">
+      <view class="label">签到策略</view>
+      <picker mode="selector" range="{{modes}}" value="{{modes.indexOf(form.mode)}}" bindchange="handleModeChange">
+        <view class="picker">{{form.mode}}</view>
+      </picker>
+    </view>
+    <view class="field">
+      <view class="label">签到时长（分钟）</view>
+      <slider min="5" max="20" step="1" value="{{form.duration}}" data-field="duration" bindchange="handleSliderChange" />
+      <view class="value">{{form.duration}} 分钟</view>
+    </view>
+    <view class="field">
+      <view class="label">有效范围（米）</view>
+      <slider min="30" max="200" step="10" value="{{form.range}}" data-field="range" bindchange="handleSliderChange" />
+      <view class="value">{{form.range}} 米</view>
+    </view>
+    <view class="field">
+      <view class="label">迟到缓冲（分钟）</view>
+      <slider min="0" max="15" step="5" value="{{form.lateBuffer}}" data-field="lateBuffer" bindchange="handleSliderChange" />
+      <view class="value">{{form.lateBuffer}} 分钟</view>
+    </view>
+    <view class="field">
+      <view class="label">二维码刷新频率（秒）</view>
+      <slider min="10" max="60" step="5" value="{{form.qrRefreshInterval}}" data-field="qrRefreshInterval" bindchange="handleSliderChange" />
+      <view class="value">{{form.qrRefreshInterval}} 秒</view>
+    </view>
+    <view class="field">
+      <view class="label">自动结束（分钟）</view>
+      <slider min="5" max="60" step="5" value="{{form.autoCloseMinutes}}" data-field="autoCloseMinutes" bindchange="handleSliderChange" />
+      <view class="value">{{form.autoCloseMinutes}} 分钟</view>
+    </view>
+    <view class="field">
+      <view class="label">备注</view>
+      <textarea placeholder="可选，如考试或特殊安排说明" value="{{form.remark}}" data-field="remark" bindinput="handleInput" />
+    </view>
+    <button type="primary" loading="{{submitting}}" bindtap="handleSubmit">开始签到</button>
+  </view>
+</view>

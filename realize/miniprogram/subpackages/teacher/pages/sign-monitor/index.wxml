@@ -1,0 +1,37 @@
+<view class="page">
+  <view class="card summary">
+    <view class="title">{{monitor.courseName}}</view>
+    <view class="meta">批次 {{monitor.batchId}} · 总人数 {{monitor.total}}</view>
+    <view class="progress">
+      <view class="signed">{{monitor.signed}} 已签到</view>
+      <view class="pending">{{monitor.total - monitor.signed}} 未签到</view>
+    </view>
+    <view class="qr">
+      <view class="qr-placeholder">动态二维码</view>
+      <view class="qr-info">刷新倒计时 {{monitor.qrExpiredIn}}s</view>
+    </view>
+    <view class="actions">
+      <button size="mini" bindtap="handleRefresh">{{refreshing ? '刷新中' : '刷新状态'}}</button>
+      <button size="mini" type="primary" bindtap="handleRemind">提醒未签到</button>
+      <button size="mini" type="warn" bindtap="handleEndSign">结束签到</button>
+    </view>
+  </view>
+
+  <section-header title="已签到 {{monitor.studentsSigned.length || monitor.signed}} 人"></section-header>
+  <view class="list card">
+    <view class="row" wx:for="{{monitor.studentsSigned}}" wx:key="name">
+      <view>{{item.name}}</view>
+      <view class="status normal">{{item.status}} · {{item.time}}</view>
+    </view>
+    <view class="empty" wx:if="{{!monitor.studentsSigned.length}}">暂未有人签到</view>
+  </view>
+
+  <section-header title="未签到 {{(monitor.studentsPending.length || (monitor.total - monitor.signed))}} 人"></section-header>
+  <view class="list card">
+    <view class="row" wx:for="{{monitor.studentsPending}}" wx:key="name">
+      <view>{{item.name}}</view>
+      <view class="status danger">{{item.status}}</view>
+    </view>
+    <view class="empty" wx:if="{{!monitor.studentsPending.length}}">暂无未签到学生</view>
+  </view>
+</view>

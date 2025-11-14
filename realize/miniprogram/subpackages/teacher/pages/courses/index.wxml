@@ -1,0 +1,23 @@
+<view class="page">
+  <view class="search card">
+    <input placeholder="搜索课程/班级" value="{{keyword}}" bindinput="handleInput" />
+  </view>
+
+  <section-header title="本学期课程"></section-header>
+  <view wx:for="{{courses}}" wx:key="id" class="course card">
+    <view class="header">
+      <view>
+        <view class="name">{{item.name}}</view>
+        <view class="clazz">{{item.clazz}} · {{item.schedule}}</view>
+      </view>
+      <view class="rate">{{item.attendanceRate}}</view>
+    </view>
+    <view class="footer">
+      <view class="location">{{item.location}}</view>
+      <view class="actions">
+        <button size="mini" data-id="{{item.id}}" data-name="{{item.name}}" bindtap="handleStartSign">发起签到</button>
+        <button size="mini" data-id="{{item.id}}" data-name="{{item.name}}" bindtap="handleViewStats">查看统计</button>
+      </view>
+    </view>
+  </view>
+</view>

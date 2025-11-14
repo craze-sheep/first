@@ -1,0 +1,26 @@
+.page {
+  padding: 24rpx;
+}
+
+.field {
+  margin-bottom: 28rpx;
+}
+
+.label {
+  font-size: 26rpx;
+  margin-bottom: 10rpx;
+  color: #374151;
+}
+
+.picker {
+  padding: 20rpx;
+  background: #f3f4f6;
+  border-radius: var(--radius-md);
+}
+
+.value {
+  text-align: right;
+  color: #6b7280;
+  font-size: 24rpx;
+  margin-top: 4rpx;
+}

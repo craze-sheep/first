@@ -1,0 +1,50 @@
+.page {
+  padding: 24rpx;
+}
+
+.search input {
+  padding: 20rpx;
+  background: #f3f4f6;
+  border-radius: var(--radius-md);
+}
+
+.course {
+  margin-bottom: 20rpx;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12rpx;
+}
+
+.name {
+  font-size: 32rpx;
+  font-weight: 600;
+}
+
+.clazz {
+  color: #6b7280;
+  font-size: 24rpx;
+  margin-top: 6rpx;
+}
+
+.rate {
+  font-size: 30rpx;
+  color: #2c7cf1;
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.location {
+  color: #6b7280;
+}
+
+.actions button {
+  margin-left: 16rpx;
+}

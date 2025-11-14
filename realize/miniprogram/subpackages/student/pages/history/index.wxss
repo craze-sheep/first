@@ -1,0 +1,51 @@
+.page {
+  padding: 24rpx;
+}
+
+.record {
+  margin-bottom: 16rpx;
+}
+
+.course {
+  font-size: 30rpx;
+  font-weight: 600;
+}
+
+.meta {
+  margin-top: 12rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #6b7280;
+}
+
+.status {
+  padding: 4rpx 12rpx;
+  border-radius: 999rpx;
+  font-size: 24rpx;
+}
+
+.status.normal {
+  background: rgba(34, 197, 94, 0.15);
+  color: #15803d;
+}
+
+.status.late {
+  background: rgba(251, 191, 36, 0.2);
+  color: #92400e;
+}
+
+.status.absent {
+  background: rgba(248, 113, 113, 0.2);
+  color: #b91c1c;
+}
+
+.time {
+  font-size: 24rpx;
+}
+
+.empty {
+  padding: 60rpx 0;
+  text-align: center;
+  color: #9ca3af;
+}

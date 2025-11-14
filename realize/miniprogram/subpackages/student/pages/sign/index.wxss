@@ -1,0 +1,67 @@
+.page {
+  padding: 24rpx;
+}
+
+.info .title {
+  font-size: 34rpx;
+  font-weight: 600;
+}
+
+.info .meta,
+.info .deadline {
+  color: #6b7280;
+  margin-top: 8rpx;
+}
+
+.steps .step {
+  display: flex;
+  align-items: center;
+  margin-bottom: 24rpx;
+}
+
+.steps .step:last-child {
+  margin-bottom: 0;
+}
+
+.marker {
+  width: 24rpx;
+  height: 24rpx;
+  border-radius: 50%;
+  margin-right: 16rpx;
+  background: #d1d5db;
+}
+
+.marker.done {
+  background: #34d399;
+}
+
+.marker.pending {
+  background: #fbbf24;
+}
+
+.marker.skipped {
+  background: #9ca3af;
+}
+
+.step-title {
+  font-size: 28rpx;
+  font-weight: 500;
+}
+
+.step-status {
+  color: #6b7280;
+  font-size: 24rpx;
+}
+
+.actions button {
+  margin-bottom: 16rpx;
+}
+
+.actions button:last-child {
+  margin-bottom: 0;
+}
+
+.btn-secondary {
+  background: rgba(44, 124, 241, 0.1);
+  color: #2c7cf1;
+}
