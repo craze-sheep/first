@@ -3,7 +3,7 @@ App({
     role: "student",
     token: "",
     env: "dev",
-    cloudEnvId: "cloud1-5gpag96tbc554e8d",
+    cloudEnvId: "cloud1-8gzerxc2d2e66452",
     userProfile: null
   },
   onLaunch() {
