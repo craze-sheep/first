@@ -76,3 +76,30 @@
   font-size: 22rpx;
   color: #6b7280;
 }
+
+.service-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 10rpx 0;
+}
+
+.service-badge {
+  padding: 4rpx 12rpx;
+  border-radius: 999rpx;
+  font-size: 22rpx;
+}
+
+.service-badge.normal {
+  background: rgba(34, 197, 94, 0.16);
+  color: #15803d;
+}
+
+.service-badge.warning {
+  background: rgba(251, 191, 36, 0.16);
+  color: #b45309;
+}
+
+.service-badge.error {
+  background: rgba(239, 68, 68, 0.16);
+  color: #b91c1c;
+}

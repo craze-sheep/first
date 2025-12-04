@@ -12,6 +12,12 @@
   color: #6b7280;
 }
 
+.filter-card .picker {
+  padding: 18rpx;
+  background: #f3f4f6;
+  border-radius: 12rpx;
+}
+
 .chart-card {
   margin-top: 20rpx;
 }
@@ -29,6 +35,27 @@
 
 .btn {
   width: 100%;
+}
+
+.anomaly-card {
+  margin-bottom: 20rpx;
+}
+
+.anomaly-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10rpx 0;
+  border-bottom: 1px solid #f3f4f6;
+}
+
+.anomaly-row:last-child {
+  border-bottom: none;
+}
+
+.anomaly-row .tag {
+  color: #b45309;
+  font-size: 24rpx;
 }
 
 .record {

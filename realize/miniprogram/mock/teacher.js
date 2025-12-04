@@ -37,6 +37,10 @@ const signMonitorMock = {
   studentsPending: [
     { name: "赵敏", status: "未签到" },
     { name: "陈阳", status: "未签到" }
+  ],
+  abnormal: [
+    { name: "周九", reason: "定位失败 3 次" },
+    { name: "郑十", reason: "人脸识别失败 2 次" }
   ]
 };
 

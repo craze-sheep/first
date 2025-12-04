@@ -1,5 +1,6 @@
-const { signLaunchDefaults } = require("../../../../mock/teacher");
+const { signLaunchDefaults, teacherCoursesMock } = require("../../../../mock/teacher");
 const attendanceService = require("../../../../services/attendance");
+const { getDB } = require("../../../../services/cloud");
 
 Page({
   data: {
@@ -15,12 +16,55 @@ Page({
       autoCloseMinutes: 15,
       remark: ""
     },
-    submitting: false
+    submitting: false,
+    courseInfo: null
   },
   onLoad(options) {
     this.setData({
       courseId: (options && options.courseId) || "",
       courseName: decodeURIComponent((options && options.courseName) || "")
+    });
+    this.loadCourseInfo((options && options.courseId) || "");
+  },
+  loadCourseInfo(courseId) {
+    const db = getDB();
+    if (db && courseId) {
+      db.collection("courses")
+        .doc(courseId)
+        .get()
+        .then((res) => {
+          const data = res.data || {};
+          const scheduleList = data.schedule || [];
+          const first = scheduleList[0] || {};
+          this.setData({
+            courseInfo: {
+              clazz: data.clazz || "未设置班级",
+              time: first.time || "时间待定",
+              location: first.location || "未设置位置",
+              studentCount: data.studentCount || (Array.isArray(data.students) ? data.students.length : 0)
+            }
+          });
+        })
+        .catch(() => {
+          this.fallbackCourseInfo();
+        });
+    } else {
+      this.fallbackCourseInfo();
+    }
+  },
+  fallbackCourseInfo() {
+    const match =
+      teacherCoursesMock.find(
+        (item) => item.id === this.data.courseId || item.name === this.data.courseName
+      ) || teacherCoursesMock[0];
+    if (!match) return;
+    this.setData({
+      courseInfo: {
+        clazz: match.clazz,
+        time: match.schedule,
+        location: match.location,
+        studentCount: 0
+      }
     });
   },
   handleModeChange(event) {
@@ -37,6 +81,18 @@ Page({
     const field = event.currentTarget.dataset.field;
     this.setData({
       [`form.${field}`]: event.detail.value
+    });
+  },
+  handleRelocate() {
+    wx.chooseLocation({
+      success: (res) => {
+        this.setData({
+          courseInfo: {
+            ...(this.data.courseInfo || {}),
+            location: res.name || `${res.latitude.toFixed(4)},${res.longitude.toFixed(4)}`
+          }
+        });
+      }
     });
   },
   handleSubmit() {

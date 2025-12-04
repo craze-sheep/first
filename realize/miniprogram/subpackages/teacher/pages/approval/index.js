@@ -10,7 +10,14 @@ const formatDateTime = (timestamp) => {
 Page({
   data: {
     approvals: approvalListMock,
-    loading: false
+    displayApprovals: approvalListMock,
+    loading: false,
+    statusOptions: ["全部", "待审批", "已通过", "已驳回"],
+    statusIndex: 0,
+    courseOptions: ["全部课程"],
+    courseIndex: 0,
+    detailVisible: false,
+    currentDetail: null
   },
   onShow() {
     this.loadApprovals();
@@ -32,6 +39,7 @@ Page({
         this.setData({
           approvals: this.data.approvals.map((item) => (item.id === id ? { ...item, status } : item))
         });
+        this.applyFilters();
       })
       .catch((err) => {
         wx.showToast({ title: err.message || "操作失败", icon: "none" });
@@ -53,14 +61,54 @@ Page({
                 course: item.courseName,
                 reason: item.reason,
                 submittedAt: formatDateTime(item.createdAt),
-                status: item.status || "pending"
+                status: item.status || "pending",
+                evidence: item.evidence || "",
+                type: item.type || "病假"
               }))
             : approvalListMock;
-        this.setData({ approvals: normalized });
+        const courseOptions = ["全部课程", ...Array.from(new Set(normalized.map((item) => item.course)))];
+        this.setData(
+          {
+            approvals: normalized,
+            courseOptions
+          },
+          () => this.applyFilters()
+        );
       })
       .catch(() => {
-        this.setData({ approvals: approvalListMock });
+        this.setData({ approvals: approvalListMock, displayApprovals: approvalListMock });
       })
       .finally(() => this.setData({ loading: false }));
+  },
+  handleStatusChange(event) {
+    this.setData({ statusIndex: Number(event.detail.value) || 0 }, () => this.applyFilters());
+  },
+  handleCourseChange(event) {
+    this.setData({ courseIndex: Number(event.detail.value) || 0 }, () => this.applyFilters());
+  },
+  applyFilters() {
+    const statusMap = ["all", "pending", "approved", "rejected"];
+    const targetStatus = statusMap[this.data.statusIndex];
+    let list = this.data.approvals.slice();
+    if (targetStatus !== "all") {
+      list = list.filter((item) => item.status === targetStatus);
+    }
+    if (this.data.courseIndex > 0) {
+      const course = this.data.courseOptions[this.data.courseIndex];
+      list = list.filter((item) => item.course === course);
+    }
+    this.setData({ displayApprovals: list });
+  },
+  handleViewDetail(event) {
+    const id = event.currentTarget.dataset.id;
+    const target = this.data.approvals.find((item) => item.id === id);
+    if (!target) return;
+    this.setData({
+      detailVisible: true,
+      currentDetail: target
+    });
+  },
+  handleCloseDetail() {
+    this.setData({ detailVisible: false, currentDetail: null });
   }
 });

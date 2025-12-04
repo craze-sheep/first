@@ -11,29 +11,86 @@
     </view>
   </view>
 
-  <section-header title="本周出勤" action-text="查看详情" bindaction="handleHistory"></section-header>
-  <view class="stats-grid">
-    <stats-card title="出勤率" value="{{stats.weekAttendance}}" trend="{{stats.trend}}" description="较上周">
-    </stats-card>
-    <stats-card title="迟到次数" value="{{stats.lateCount}}" trend="-" description="本周累计">
-    </stats-card>
-    <stats-card title="缺勤次数" value="{{stats.absentCount}}" trend="-" description="本周累计">
-    </stats-card>
-  </view>
-
-  <section-header title="今日课程"></section-header>
-  <view wx:for="{{courses}}" wx:key="id" class="course card" data-id="{{item.id}}" bindtap="handleCourseTap">
-    <view class="course-title">{{item.name}}</view>
-    <view class="course-meta">{{item.time}} · {{item.location}}</view>
-    <view class="course-footer">
-      <view class="teacher">{{item.teacher}}</view>
-      <view class="status {{item.status}}">{{item.status === 'ongoing' ? '进行中' : item.status === 'upcoming' ? '即将开始' : '已结束'}}</view>
+  <view class="card weekly-card">
+    <view class="weekly-head">
+      <view>
+        <view class="weekly-title">本周出勤统计</view>
+        <view class="weekly-sub">较上周 {{stats.trend}}</view>
+      </view>
+      <view class="weekly-rate">{{stats.weekAttendance}}</view>
+    </view>
+    <view class="progress-bar">
+      <view class="progress-inner" style="width: {{stats.weekAttendance || '0%'}};"></view>
+    </view>
+    <view class="weekly-metrics">
+      <view class="metric">
+        <view class="metric-label">正常</view>
+        <view class="metric-value">{{weeklySummary.normal}}</view>
+      </view>
+      <view class="metric">
+        <view class="metric-label">迟到</view>
+        <view class="metric-value warn">{{weeklySummary.late}}</view>
+      </view>
+      <view class="metric">
+        <view class="metric-label">缺勤</view>
+        <view class="metric-value danger">{{weeklySummary.absent}}</view>
+      </view>
     </view>
   </view>
 
-  <section-header title="提醒"></section-header>
+  <view class="card quick-card">
+    <view class="quick-title">快捷功能</view>
+    <view class="quick-grid">
+      <view
+        class="quick-item"
+        wx:for="{{quickActions}}"
+        wx:key="id"
+        data-id="{{item.id}}"
+        bindtap="handleActionTap"
+      >
+        <view class="quick-icon">{{item.icon}}</view>
+        <view class="quick-label">{{item.label}}</view>
+      </view>
+    </view>
+  </view>
+
+  <section-header title="今日课程" action-text="查看记录" bindaction="handleHistory"></section-header>
+  <view
+    wx:for="{{courses}}"
+    wx:key="id"
+    class="course card"
+    data-id="{{item.id}}"
+    data-name="{{item.name}}"
+    data-location="{{item.location}}"
+    data-time="{{item.time}}"
+    bindtap="handleCourseTap"
+    bindlongpress="handleCourseLongPress"
+  >
+    <view class="course-header">
+      <view class="course-title">{{item.name}}</view>
+      <view class="status {{item.status}}">
+        {{
+          item.status === 'ongoing'
+            ? '进行中'
+            : item.status === 'upcoming'
+            ? '未开始'
+            : item.status === 'remind'
+            ? '即将开始'
+            : '已结束'
+        }}
+      </view>
+    </view>
+    <view class="course-meta">{{item.time}} · {{item.location}}</view>
+    <view class="course-footer">
+      <view class="teacher">{{item.teacher}}</view>
+      <view class="tag">点击前往签到</view>
+    </view>
+  </view>
+
+  <section-header title="签到提醒" action-text="订阅提醒" bindaction="handleSubscribe"></section-header>
   <view wx:for="{{reminders}}" wx:key="id" class="reminder {{item.type}}">
-    {{item.text}}
+    <view class="dot"></view>
+    <view class="text">{{item.text}}</view>
   </view>
 
   <view class="card actions">

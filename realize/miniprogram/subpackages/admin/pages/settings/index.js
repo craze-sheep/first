@@ -13,7 +13,8 @@ Page({
     notifyContent: "",
     messages: [],
     importing: false,
-    exporting: false
+    exporting: false,
+    serviceStatus: adminOverviewMock.services || []
   },
   onShow() {
     this.loadOverview();
@@ -26,11 +27,16 @@ Page({
       .then((data) => {
         this.setData({
           overview: data || adminOverviewMock,
-          logs: (data && data.logs) || []
+          logs: (data && data.logs) || [],
+          serviceStatus: (data && data.services) || adminOverviewMock.services || []
         });
       })
       .catch(() => {
-        this.setData({ overview: adminOverviewMock, logs: adminOverviewMock.logs || [] });
+        this.setData({
+          overview: adminOverviewMock,
+          logs: adminOverviewMock.logs || [],
+          serviceStatus: adminOverviewMock.services || []
+        });
       })
       .finally(() => this.setData({ loading: false }));
   },

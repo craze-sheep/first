@@ -4,10 +4,16 @@
     <button size="mini" type="primary" bindtap="handleBulkResolve" wx:if="{{selecting}}">批量标记已处理</button>
   </view>
 
+  <view class="card filter">
+    <picker range="{{levelOptions}}" value="{{levelIndex}}" bindchange="handleLevelChange">
+      <view class="picker">{{levelOptions[levelIndex]}}</view>
+    </picker>
+  </view>
+
   <checkbox-group bindchange="handleSelectChange">
     <view
       class="card alert"
-      wx:for="{{list}}"
+      wx:for="{{displayList}}"
       wx:key="id"
       data-id="{{item.studentId}}"
       bindtap="handleStudentTap"
@@ -33,6 +39,15 @@
           catchtap="handleResolveSingle"
         >
           标记已处理
+        </button>
+        <button
+          size="mini"
+          type="primary"
+          data-id="{{item.studentId}}"
+          data-student="{{item.student}}"
+          catchtap="handleContact"
+        >
+          记录联系
         </button>
       </view>
     </view>

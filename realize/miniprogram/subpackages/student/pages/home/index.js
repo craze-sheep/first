@@ -10,7 +10,18 @@ Page({
     courses: studentDashboardMock.courses,
     reminders: studentDashboardMock.reminders,
     historyLoading: false,
-    refreshing: false
+    refreshing: false,
+    quickActions: [
+      { id: "scan", label: "扫码签到", icon: "📷", path: "/subpackages/student/pages/sign/index" },
+      { id: "makeup", label: "补签申请", icon: "📝", path: "/subpackages/student/pages/makeup/index" },
+      { id: "records", label: "考勤记录", icon: "📊", path: "/subpackages/student/pages/history/index" },
+      { id: "messages", label: "消息通知", icon: "🔔", path: "" }
+    ],
+    weeklySummary: {
+      normal: 0,
+      late: 0,
+      absent: 0
+    }
   },
   onShow() {
     this.syncProfile();
@@ -27,6 +38,23 @@ Page({
     const id = event.currentTarget.dataset.id;
     wx.navigateTo({
       url: `/subpackages/student/pages/sign/index?courseId=${id}`
+    });
+  },
+  handleCourseLongPress(event) {
+    const { name, location, time } = event.currentTarget.dataset;
+    wx.showActionSheet({
+      itemList: ["课程详情", "查看地点"],
+      success: (res) => {
+        if (res.tapIndex === 1) {
+          wx.showModal({
+            title: name || "课程地点",
+            content: `${location || "地点待定"} · ${time || ""}`,
+            showCancel: false
+          });
+        } else {
+          wx.showToast({ title: "课程详情敬请期待", icon: "none" });
+        }
+      }
     });
   },
   handleHistory() {
@@ -49,6 +77,24 @@ Page({
     this.loadDashboard();
     this.loadReminders();
   },
+  onPullDownRefresh() {
+    this.handleRefresh();
+    setTimeout(() => {
+      wx.stopPullDownRefresh();
+    }, 600);
+  },
+  handleActionTap(event) {
+    const actionId = event.currentTarget.dataset.id;
+    const action = this.data.quickActions.find((item) => item.id === actionId);
+    if (!action) return;
+    if (!action.path) {
+      wx.showToast({ title: "敬请期待", icon: "none" });
+      return;
+    }
+    wx.navigateTo({
+      url: action.path
+    });
+  },
   loadDashboard() {
     const db = getDB();
     this.setData({ refreshing: true });
@@ -65,13 +111,15 @@ Page({
           data.map((course) => {
             const scheduleList = course.schedule || [];
             const firstSchedule = scheduleList[0] || {};
+            const upcomingTime = firstSchedule.time || "时间待定";
+            const status = this.computeStatus(firstSchedule);
             return {
               id: course._id || course.courseId || course.name,
               name: course.name || "未命名课程",
               teacher: course.teacherId || "任课教师",
-              time: firstSchedule.time || "时间待定",
+              time: upcomingTime,
               location: firstSchedule.location || "地点待定",
-              status: "upcoming"
+              status
             };
           }) || [];
         this.setData({
@@ -118,11 +166,23 @@ Page({
             lateCount: summary.late,
             absentCount: summary.absent,
             trend: studentDashboardMock.stats.trend
+          },
+          weeklySummary: {
+            normal: summary.normal,
+            late: summary.late,
+            absent: summary.absent
           }
         });
       })
       .catch(() => {
-        this.setData({ stats: studentDashboardMock.stats });
+        this.setData({
+          stats: studentDashboardMock.stats,
+          weeklySummary: {
+            normal: studentDashboardMock.stats.normal || 0,
+            late: studentDashboardMock.stats.lateCount,
+            absent: studentDashboardMock.stats.absentCount
+          }
+        });
       });
   },
   loadReminders() {
@@ -152,5 +212,24 @@ Page({
       .catch(() => {
         this.setData({ reminders: studentDashboardMock.reminders });
       });
+  },
+  computeStatus(schedule = {}) {
+    const now = Date.now();
+    const [startText, endText] = (schedule.time || "").split("-");
+    const parseTime = (text) => {
+      if (!text) return null;
+      const [hour, minute] = text.split(":").map((value) => Number(value));
+      if (Number.isNaN(hour) || Number.isNaN(minute)) return null;
+      const date = new Date();
+      date.setHours(hour, minute, 0, 0);
+      return date.getTime();
+    };
+    const start = parseTime(startText);
+    const end = parseTime(endText);
+    if (!start || !end) return "upcoming";
+    if (now >= start && now <= end) return "ongoing";
+    if (now > end) return "completed";
+    if (start - now <= 15 * 60 * 1000) return "remind";
+    return "upcoming";
   }
 });

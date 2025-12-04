@@ -19,6 +19,16 @@
   </view>
 
   <view class="card section">
+    <view class="title">服务健康</view>
+    <view class="service-row" wx:for="{{serviceStatus}}" wx:key="name">
+      <view class="service-name">{{item.name}}</view>
+      <view class="service-badge {{item.status}}">
+        {{item.status === 'normal' ? '正常' : item.status === 'warning' ? '告警' : '异常'}}
+      </view>
+    </view>
+  </view>
+
+  <view class="card section">
     <view class="title">系统状态</view>
     <view class="item">最近部署：{{overview.lastDeploy}}</view>
   </view>

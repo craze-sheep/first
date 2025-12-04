@@ -49,13 +49,23 @@
   margin-bottom: 16rpx;
 }
 
+.filter {
+  margin-bottom: 16rpx;
+}
+
+.filter .picker {
+  background: #f3f4f6;
+  padding: 16rpx;
+  border-radius: 12rpx;
+}
+
 .actions {
   margin-top: 12rpx;
   display: flex;
-  justify-content: space-between;
+  gap: 12rpx;
   align-items: center;
 }
 
 .actions button {
-  margin-left: 16rpx;
+  flex: 1;
 }

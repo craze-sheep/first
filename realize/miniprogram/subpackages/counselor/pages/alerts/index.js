@@ -4,9 +4,12 @@ const { alertsMock } = require("../../../../mock/counselor");
 Page({
   data: {
     list: alertsMock,
+    displayList: alertsMock,
     loading: false,
     selecting: false,
-    selectedIds: []
+    selectedIds: [],
+    levelOptions: ["全部级别", "关注", "严重"],
+    levelIndex: 0
   },
   onShow() {
     this.fetchAlerts();
@@ -17,13 +20,13 @@ Page({
       .fetchAlerts()
       .then((data) => {
         if (data && data.length) {
-          this.setData({ list: data });
+          this.setData({ list: data, displayList: data });
         } else {
-          this.setData({ list: alertsMock });
+          this.setData({ list: alertsMock, displayList: alertsMock });
         }
       })
       .catch(() => {
-        this.setData({ list: alertsMock });
+        this.setData({ list: alertsMock, displayList: alertsMock });
       })
       .finally(() => {
         this.setData({ loading: false });
@@ -74,5 +77,33 @@ Page({
       .catch((err) => {
         wx.showToast({ title: err.message || "操作失败", icon: "none" });
       });
+  },
+  handleLevelChange(event) {
+    this.setData({ levelIndex: Number(event.detail.value) || 0 }, () => this.applyFilters());
+  },
+  applyFilters() {
+    const level = this.data.levelIndex;
+    let list = this.data.list.slice();
+    if (level === 1) {
+      list = list.filter((item) => item.level !== "serious");
+    } else if (level === 2) {
+      list = list.filter((item) => item.level === "serious");
+    }
+    this.setData({ displayList: list });
+  },
+  handleContact(event) {
+    const id = event.currentTarget.dataset.id;
+    const student = event.currentTarget.dataset.student;
+    wx.showActionSheet({
+      itemList: ["电话联系家长", "电话联系学生", "线下面谈"],
+      success: (res) => {
+        const templates = ["电话联系家长", "电话联系学生", "线下面谈"];
+        const content = `${templates[res.tapIndex]} - ${student}`;
+        counselorService
+          .addFollowup({ studentId: id, content })
+          .then(() => wx.showToast({ title: "已记录", icon: "success" }))
+          .catch((err) => wx.showToast({ title: err.message || "记录失败", icon: "none" }));
+      }
+    });
   }
 });

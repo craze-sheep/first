@@ -28,7 +28,8 @@
       "pages": [
         "pages/dashboard/index",
         "pages/alerts/index",
-        "pages/student-detail/index"
+        "pages/student-detail/index",
+        "pages/makeup-review/index"
       ]
     },
     {

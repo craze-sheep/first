@@ -4,6 +4,11 @@ const adminOverviewMock = {
   counselorTotal: 24,
   pendingApprovals: 6,
   lastDeploy: "2025-11-10 22:30",
+  services: [
+    { name: "定位服务", status: "normal" },
+    { name: "二维码服务", status: "normal" },
+    { name: "人脸识别服务", status: "warning" }
+  ],
   logs: [
     { id: "log-01", action: "导入学生数据 2201班", operator: "admin01", time: "11-12 09:20" },
     { id: "log-02", action: "发布 1.0.5 版本", operator: "ops02", time: "11-11 18:02" }

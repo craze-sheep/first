@@ -8,6 +8,11 @@
   gap: 12rpx;
 }
 
+.head-actions {
+  display: flex;
+  gap: 12rpx;
+}
+
 .title {
   font-size: 34rpx;
   font-weight: 600;
@@ -15,6 +20,19 @@
 
 .subtitle {
   color: #4b5563;
+}
+
+.filters {
+  display: flex;
+  gap: 12rpx;
+  margin: 16rpx 0;
+}
+
+.filters .picker {
+  flex: 1;
+  background: #f3f4f6;
+  padding: 18rpx;
+  border-radius: 12rpx;
 }
 
 .stats-grid {

@@ -3,7 +3,22 @@
     <view class="title">{{overview.grade || '辅导员大盘'}}</view>
     <view class="subtitle">整体出勤率 {{overview.overallRate}}</view>
     <view class="meta">较上周 {{overview.trend}}</view>
-    <button size="mini" bindtap="handleViewAlerts">查看预警</button>
+    <view class="head-actions">
+      <button size="mini" bindtap="handleViewAlerts">查看预警</button>
+      <button size="mini" type="primary" bindtap="handleQuickMakeup">特殊补签</button>
+    </view>
+  </view>
+
+  <view class="card filters">
+    <picker range="{{gradeOptions}}" value="{{filters.gradeIndex}}" data-field="gradeIndex" bindchange="handleFilterChange">
+      <view class="picker">{{gradeOptions[filters.gradeIndex]}}</view>
+    </picker>
+    <picker range="{{majorOptions}}" value="{{filters.majorIndex}}" data-field="majorIndex" bindchange="handleFilterChange">
+      <view class="picker">{{majorOptions[filters.majorIndex]}}</view>
+    </picker>
+    <picker range="{{classOptions}}" value="{{filters.classIndex}}" data-field="classIndex" bindchange="handleFilterChange">
+      <view class="picker">{{classOptions[filters.classIndex]}}</view>
+    </picker>
   </view>
 
   <section-header title="关键指标"></section-header>

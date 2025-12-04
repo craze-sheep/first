@@ -2,48 +2,100 @@
   padding: 24rpx;
 }
 
-.summary .title {
+.summary-card .title {
   font-size: 32rpx;
   font-weight: 600;
 }
 
-.summary .meta {
+.summary-card .meta {
   color: #6b7280;
-  margin: 6rpx 0 12rpx;
+  margin-top: 8rpx;
 }
 
-.progress {
-  font-size: 24rpx;
-  display: flex;
-  justify-content: space-between;
-}
-
-.qr {
-  margin: 20rpx 0;
+.progress-ring {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  margin-top: 20rpx;
+  gap: 24rpx;
+}
+
+.progress-ring .circle {
+  width: 160rpx;
+  height: 160rpx;
+  border-radius: 50%;
+  background: #eff6ff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #1d4ed8;
+}
+
+.progress-ring .percent {
+  font-size: 36rpx;
+  font-weight: 700;
+}
+
+.progress-ring .count {
+  font-size: 22rpx;
+  color: #1f2937;
+}
+
+.progress-ring .detail {
+  flex: 1;
+  color: #4b5563;
+  font-size: 24rpx;
+}
+
+.qr-card {
+  margin-top: 20rpx;
 }
 
 .qr-placeholder {
-  width: 200rpx;
-  height: 200rpx;
-  border-radius: 16rpx;
+  width: 220rpx;
+  height: 220rpx;
   border: 1px dashed #d1d5db;
+  border-radius: 16rpx;
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-bottom: 12rpx;
+}
+
+.qr-tip {
+  color: #9ca3af;
+  font-size: 24rpx;
+  margin-bottom: 12rpx;
+}
+
+.qr-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12rpx;
+}
+
+.tabs {
+  margin-top: 20rpx;
+  display: flex;
+}
+
+.tab {
+  flex: 1;
+  text-align: center;
+  padding: 16rpx 0;
   color: #6b7280;
 }
 
-.actions button {
-  margin-right: 12rpx;
+.tab.active {
+  color: #2563eb;
+  border-bottom: 4rpx solid #2563eb;
 }
 
 .list .row {
   display: flex;
   justify-content: space-between;
-  padding: 16rpx 0;
+  align-items: center;
+  padding: 18rpx 0;
   border-bottom: 1px solid #f3f4f6;
 }
 
@@ -59,8 +111,12 @@
   color: #f97316;
 }
 
+.status.warn {
+  color: #b45309;
+}
+
 .empty {
   text-align: center;
   color: #9ca3af;
-  padding: 20rpx 0;
+  padding: 30rpx 0;
 }

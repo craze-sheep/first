@@ -16,6 +16,7 @@ Page({
     courseId: "",
     courseName: "",
     detail: null,
+    allRecords: [],
     stats: {
       total: 0,
       normal: 0,
@@ -25,6 +26,9 @@ Page({
     records: [],
     loading: false,
     exporting: false,
+    rangeOptions: ["最近7次", "最近30次", "全部"],
+    rangeIndex: 0,
+    anomalies: [],
     chartConfig: {
       lazyLoad: true
     },
@@ -54,31 +58,19 @@ Page({
     Promise.all([coursePromise, attendanceService.listRecords({ courseId: this.data.courseId })])
       .then(([course, listResult]) => {
         const rawRecords = Array.isArray(listResult) ? listResult : listResult?.signed || [];
-        const stats = rawRecords.reduce(
-          (acc, record) => {
-            acc.total += 1;
-            if (record.status === "normal") acc.normal += 1;
-            if (record.status === "late") acc.late += 1;
-            if (record.status === "absent") acc.absent += 1;
-            return acc;
-          },
-          { total: 0, normal: 0, late: 0, absent: 0 }
-        );
         const records = rawRecords.map((record) => ({
           id: record.recordId || record._id,
           student: record.studentName || record.studentId,
           status: record.status || "normal",
-          time: formatDateTime(record.signedAt)
+          time: formatDateTime(record.signedAt),
+          timestamp: record.signedAt
         }));
         this.setData(
           {
             detail: course,
-            stats,
-            records
+            allRecords: records
           },
-          () => {
-            this.initCharts(records, stats);
-          }
+          () => this.applyRangeFilter()
         );
       })
       .catch(() => {
@@ -90,10 +82,62 @@ Page({
             late: 0,
             absent: 0
           },
-          records: []
+          records: [],
+          allRecords: []
         });
       })
       .finally(() => this.setData({ loading: false }));
+  },
+  handleRangeChange(event) {
+    this.setData({ rangeIndex: Number(event.detail.value) || 0 }, () => this.applyRangeFilter());
+  },
+  applyRangeFilter() {
+    let list = this.data.allRecords.slice();
+    if (!list.length) {
+      this.setData({ records: [], stats: { total: 0, normal: 0, late: 0, absent: 0 }, anomalies: [] });
+      return;
+    }
+    if (this.data.rangeIndex === 0) {
+      list = list.slice(-7);
+    } else if (this.data.rangeIndex === 1) {
+      list = list.slice(-30);
+    }
+    const stats = list.reduce(
+      (acc, record) => {
+        acc.total += 1;
+        if (record.status === "normal") acc.normal += 1;
+        if (record.status === "late") acc.late += 1;
+        if (record.status === "absent") acc.absent += 1;
+        return acc;
+      },
+      { total: 0, normal: 0, late: 0, absent: 0 }
+    );
+    this.setData(
+      {
+        records: list,
+        stats
+      },
+      () => {
+        this.initCharts(list, stats);
+        this.updateAnomalies(list);
+      }
+    );
+  },
+  updateAnomalies(records = []) {
+    const summary = {};
+    records.forEach((record) => {
+      const key = record.student || "未知";
+      if (!summary[key]) summary[key] = { late: 0, absent: 0 };
+      if (record.status === "late") summary[key].late += 1;
+      if (record.status === "absent") summary[key].absent += 1;
+    });
+    const list = Object.keys(summary)
+      .filter((name) => summary[name].absent >= 1 || summary[name].late >= 2)
+      .map((name) => ({
+        name,
+        desc: `迟到 ${summary[name].late} 次 / 缺勤 ${summary[name].absent} 次`
+      }));
+    this.setData({ anomalies: list });
   },
   initCharts(records, stats) {
     const historyChartComp = this.selectComponent("#historyChart");
